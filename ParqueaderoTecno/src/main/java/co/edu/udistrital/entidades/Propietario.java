@@ -23,7 +23,7 @@ public class Propietario implements Serializable {
 	@Column(nullable=false, length=45)
 	private String apellido;
 
-	private byte estado;
+	private Boolean estado;
 
 	@Column(length=200)
 	private String foto;
@@ -67,11 +67,11 @@ public class Propietario implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public byte getEstado() {
+	public Boolean getEstado() {
 		return this.estado;
 	}
 
-	public void setEstado(byte estado) {
+	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
 

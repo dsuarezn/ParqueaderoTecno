@@ -13,7 +13,7 @@ public class GenericDAOJPAImpl<T, PK extends Serializable>
 	protected Class<T> entityClass;
 	
 	@PersistenceContext
-    protected EntityManager entityManager;
+    protected EntityManager em;
 	
 	 public GenericDAOJPAImpl() {
 	        ParameterizedType genericSuperclass = (ParameterizedType) getClass()
@@ -24,24 +24,24 @@ public class GenericDAOJPAImpl<T, PK extends Serializable>
 	
 	@Override
 	public T create(T newInstance) {
-		 this.entityManager.persist(newInstance);
+		 this.em.persist(newInstance);
 	        return newInstance;
 	}
 
 	@Override
 	public T read(PK id) {
-		 return this.entityManager.find(entityClass, id);
+		 return this.em.find(entityClass, id);
 	}
 
 	@Override
 	public T update(T transientObject) {
-		  return this.entityManager.merge(transientObject);		
+		  return this.em.merge(transientObject);		
 	}
 
 	@Override
 	public void delete(T persistentObject) {
-		persistentObject = this.entityManager.merge(persistentObject);
-		this.entityManager.remove(persistentObject);
+		persistentObject = this.em.merge(persistentObject);
+		this.em.remove(persistentObject);
 	}
 
 }

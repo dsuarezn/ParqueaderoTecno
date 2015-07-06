@@ -20,7 +20,7 @@ public class Ingreso implements Serializable {
 	@Column(unique=true, nullable=false, precision=12)
 	private long idEntrada;
 
-	private Object estado;
+	private Boolean estado;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable=false)
@@ -58,11 +58,11 @@ public class Ingreso implements Serializable {
 		this.idEntrada = idEntrada;
 	}
 
-	public Object getEstado() {
+	public Boolean getEstado() {
 		return this.estado;
 	}
 
-	public void setEstado(Object estado) {
+	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
 

@@ -1,4 +1,4 @@
-package co.edu.udistrital.controladores;
+package co.edu.udistrital.web.controladores;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -4,12 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import co.edu.udistrital.dao.entityex.IngresosDAO;
-import co.edu.udistrital.dao.entityex.ParqueaderoDAO;
-import co.edu.udistrital.dao.entityex.PropietarioDAO;
-import co.edu.udistrital.dao.entityex.RoleDAO;
-import co.edu.udistrital.dao.entityex.UserDAO;
-import co.edu.udistrital.dao.entityex.VehiculosDAO;
+import co.edu.udistrital.dao.impl.IngresosDAOImpl;
+import co.edu.udistrital.dao.impl.ParqueaderoDAOImpl;
+import co.edu.udistrital.dao.impl.PropietarioDAOImpl;
+import co.edu.udistrital.dao.impl.RoleDAOImpl;
+import co.edu.udistrital.dao.impl.UserDAOImpl;
+import co.edu.udistrital.dao.impl.VehiculosDAOImpl;
+import co.edu.udistrital.dao.interfaces.IngresosDAO;
+import co.edu.udistrital.dao.interfaces.ParqueaderoDAO;
+import co.edu.udistrital.dao.interfaces.PropietarioDAO;
+import co.edu.udistrital.dao.interfaces.RoleDAO;
+import co.edu.udistrital.dao.interfaces.UserDAO;
+import co.edu.udistrital.dao.interfaces.VehiculosDAO;
 
 
 @Repository
@@ -21,46 +27,51 @@ public class DAOFactory {
 	
 	}
 	@Autowired
-	private IngresosDAO ingresosDAO;
+	private IngresosDAO ingresosDAOImpl;
 	
 	@Autowired
-	private ParqueaderoDAO parqueaderoDAO;
+	private ParqueaderoDAO parqueaderoDAOImpl;
 	
 	@Autowired
-	private PropietarioDAO propietarioDAO;
+	private PropietarioDAO propietarioDAOImpl;
 	
 	@Autowired
-	private VehiculosDAO vehiculosDAO;
+	private VehiculosDAO vehiculosDAOImpl;
 	
 	@Autowired
-	private UserDAO userDAO;
+	private UserDAO userDAOImpl;
 	
 	@Autowired
-	private RoleDAO roleDAO;
+	private RoleDAO roleDAOImpl;
 
-	public IngresosDAO getIngresosDAO() {
-		return ingresosDAO;
+	public IngresosDAO getIngresosDAOImpl() {
+		return ingresosDAOImpl;
 	}
 
-	public ParqueaderoDAO getParqueaderoDAO() {
-		return parqueaderoDAO;
+	public ParqueaderoDAO getParqueaderoDAOImpl() {
+		return parqueaderoDAOImpl;
 	}
 
-	public PropietarioDAO getPropietarioDAO() {
-		return propietarioDAO;
+	public PropietarioDAO getPropietarioDAOImpl() {
+		return propietarioDAOImpl;
 	}
 
-	public VehiculosDAO getVehiculosDAO() {
-		return vehiculosDAO;
+	public VehiculosDAO getVehiculosDAOImpl() {
+		return vehiculosDAOImpl;
 	}
 
-	public UserDAO getUserDAO() {
-		return userDAO;
+	public UserDAO getUserDAOImpl() {
+		return userDAOImpl;
 	}
 
-	public RoleDAO getRoleDAO() {
-		return roleDAO;
+	public RoleDAO getRoleDAOImpl() {
+		return roleDAOImpl;
 	}
+
+	
+	
+
+
 		
 
 }

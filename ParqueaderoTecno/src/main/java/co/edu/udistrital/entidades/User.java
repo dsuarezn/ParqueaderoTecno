@@ -10,7 +10,10 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@NamedQueries({
+	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+	@NamedQuery(name="User.findByName", query="SELECT u FROM User u WHERE u.username = :name and u.enable=true")
+})
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +22,7 @@ public class User implements Serializable {
 	@Column(unique=true, nullable=false, length=45)
 	private String username;
 
-	private byte enable;
+	private Boolean enable;
 
 	@Column(nullable=false, length=60)
 	private String password;
@@ -40,11 +43,11 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
-	public byte getEnable() {
+	public Boolean getEnable() {
 		return this.enable;
 	}
 
-	public void setEnable(byte enable) {
+	public void setEnable(Boolean enable) {
 		this.enable = enable;
 	}
 

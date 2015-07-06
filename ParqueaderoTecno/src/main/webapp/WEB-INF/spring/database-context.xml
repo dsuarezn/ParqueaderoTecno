@@ -10,17 +10,26 @@
 	<tx:annotation-driven />
 	
 	<!-- Se crea el datasource simple a partir de dbcp2 -->
-	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	    <property name="url" value="jdbc:mysql://localhost::3305/parqueaderoud" />
+	    <property name="url" value="jdbc:mysql://localhost:3305/parqueaderoud" />
 	    <property name="username" value="root" />
 	    <property name="password" value="admin" />
   	</bean>
+  	
+  	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+	    <property name="database" value="MYSQL"/>
+	    <property name="showSql" value="true"/>
+	    <property name="generateDdl" value="true"/>
+	    <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/>	 
+	  </bean>
 	
 	<!-- Se usa la configuracion de creacion del entity manager segun el contenedor -->	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-    	<property name="persistenceUnitName" value="testPU" />
+    	<property name="persistenceUnitName" value="ParqueaderoPU" />
     	<property name="dataSource" ref="dataSource" />
+    	<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+    	<property name="packagesToScan" value="co.edu.udistrital.entidades"/>
   	</bean>
 
   	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

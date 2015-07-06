@@ -41,13 +41,13 @@
  		<sec:logout logout-success-url="/login" logout-url="/j_spring_security_logout" invalidate-session="true"/>
  	</sec:http>
  	<sec:authentication-manager>
- 		<sec:authentication-provider>
-	 		<sec:user-service>
-	 			<sec:user name="sys" password="sys" authorities="ROLE_SUSER"  />
-	 			<sec:user name="admin" password="admin" authorities="ROLE_ADMIN"  />
-	 			<sec:user name="asistente" password="asistente" authorities="ROLE_ASISTENTE"  />
-	 			<sec:user name="guardia" password="guardia" authorities="ROLE_GUARDIA"  />
-	 		</sec:user-service>
+ 		<sec:authentication-provider user-service-ref="customUserDetailsServiceImpl">
+<!-- 	 		<sec:user-service> -->
+<!-- 	 			<sec:user name="sys" password="sys" authorities="ROLE_SUSER"  /> -->
+<!-- 	 			<sec:user name="admin" password="admin" authorities="ROLE_ADMIN"  /> -->
+<!-- 	 			<sec:user name="asistente" password="asistente" authorities="ROLE_ASISTENTE"  /> -->
+<!-- 	 			<sec:user name="guardia" password="guardia" authorities="ROLE_GUARDIA"  /> -->
+<!-- 	 		</sec:user-service> -->
  		</sec:authentication-provider>
  	</sec:authentication-manager>	
 
