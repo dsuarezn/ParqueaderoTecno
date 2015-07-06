@@ -30,10 +30,10 @@ public class Vehiculo implements Serializable {
 	@OneToMany(mappedBy="vehiculo")
 	private List<Ingreso> ingresos;
 
-	//bi-directional many-to-one association to Usuario
+	//bi-directional many-to-one association to Propietario
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="cedula", nullable=false)
-	private Usuario usuario;
+	private Propietario propietario;
 
 	public Vehiculo() {
 	}
@@ -84,12 +84,12 @@ public class Vehiculo implements Serializable {
 		return ingreso;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public Propietario getPropietario() {
+		return this.propietario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPropietario(Propietario propietario) {
+		this.propietario = propietario;
 	}
 
 }

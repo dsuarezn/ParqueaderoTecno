@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:sec="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-4.0.xsd
+          http://www.springframework.org/schema/context 
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/mvc 
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<context:component-scan base-package="co.edu.udistrital.*" />	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<sec:http auto-config="true">		
+ 		<sec:intercept-url pattern="/views/**" access="hasRole('SUPERUSER')" />
+ 		<sec:intercept-url pattern="/public/**" access="permitAll" />
+ 		<sec:intercept-url pattern="/resources/**" access="permitAll" />
+ 		<sec:intercept-url pattern="/login**" access="permitAll" /> 		
+ 		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
+ 		<sec:intercept-url pattern="/welcome*" access="isAuthenticated()" />
+ 		
+ 		
+ 		
+ 		<sec:form-login 
+ 			login-page="/login"
+ 			default-target-url="/welcome"
+ 			login-processing-url="/j_spring_security_check"
+ 			authentication-failure-url="/login?error"
+ 			username-parameter="j_username"
+			password-parameter="j_password"
+			always-use-default-target="true"	
+					
+ 		/>
+ 		<sec:logout logout-success-url="/login" logout-url="/j_spring_security_logout" invalidate-session="true"/>
+ 	</sec:http>
+ 	<sec:authentication-manager>
+ 		<sec:authentication-provider>
+	 		<sec:user-service>
+	 			<sec:user name="sys" password="sys" authorities="ROLE_SUSER"  />
+	 			<sec:user name="admin" password="admin" authorities="ROLE_ADMIN"  />
+	 			<sec:user name="asistente" password="asistente" authorities="ROLE_ASISTENTE"  />
+	 			<sec:user name="guardia" password="guardia" authorities="ROLE_GUARDIA"  />
+	 		</sec:user-service>
+ 		</sec:authentication-provider>
+ 	</sec:authentication-manager>	
+
+
+	
+ 	
+ 	
+</beans>
+
+

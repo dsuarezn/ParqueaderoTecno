@@ -11,25 +11,66 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	
 	<context:component-scan base-package="co.edu.udistrital" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
+
 	
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <beans:property name="definitions">
             <beans:list>
                 <beans:value>/WEB-INF/tiles/tiles-definitions.xml</beans:value>
+                <beans:value>/WEB-INF/views/**/views.xml</beans:value>
             </beans:list>
         </beans:property>
     </beans:bean>
 	
-
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	
+<!-- 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<beans:property name="prefix" value="/WEB-INF/views/" /> -->
+<!-- 		<beans:property name="suffix" value=".jsp" /> -->
+<!-- 	</beans:bean> -->
+
+
+<!-- 		<beans:bean class="org.springframework.web.servlet.view.XmlViewResolver"> -->
+<!-- 		   <beans:property name="location"> -->
+<!-- 			<beans:value>/WEB-INF/spring-views.xml</beans:value> -->
+<!-- 		   </beans:property> -->
+<!-- 		</beans:bean> -->
+
+
+	<view-controller path="/login"/>
+	<view-controller path="/welcome"/>
+
+	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="tilesViewResolver">
+    	<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+  	</beans:bean>
+
+	<beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<beans:property name="defaultLocale" value="es" />
+	</beans:bean>
+ 
+	<beans:bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<beans:property name="paramName" value="language" />
+	</beans:bean>
+ 
+	<beans:bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
+		<beans:property name="interceptors">
+		   <beans:list>
+			<beans:ref bean="localeChangeInterceptor" />
+		   </beans:list>
+		</beans:property>
+	</beans:bean>
+		
+	
+	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="basename" value="resources/i18n/mensajes" />
+		<beans:property name="fallbackToSystemLocale" value="false"/>		
+	</beans:bean>
+
 </beans:beans>

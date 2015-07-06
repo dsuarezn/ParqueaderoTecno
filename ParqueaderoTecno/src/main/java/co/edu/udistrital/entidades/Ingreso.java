@@ -17,8 +17,8 @@ public class Ingreso implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
-	private Long idEntrada;
+	@Column(unique=true, nullable=false, precision=12)
+	private long idEntrada;
 
 	private Object estado;
 
@@ -32,29 +32,29 @@ public class Ingreso implements Serializable {
 	@Column(length=500)
 	private String observacion;
 
-	//bi-directional many-to-one association to Usuario
+	//bi-directional many-to-one association to Parqueadero
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="cedula", nullable=false)
-	private Usuario usuario;
+	@JoinColumn(name="tipoParqueadero", nullable=false)
+	private Parqueadero parqueadero;
 
 	//bi-directional many-to-one association to Vehiculo
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="placa", nullable=false)
 	private Vehiculo vehiculo;
 
-	//bi-directional many-to-one association to Parqueadero
+	//bi-directional many-to-one association to Propietario
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="tipoParqueadero", nullable=false)
-	private Parqueadero parqueadero;
+	@JoinColumn(name="cedula", nullable=false)
+	private Propietario propietario;
 
 	public Ingreso() {
 	}
 
-	public Long getIdEntrada() {
+	public long getIdEntrada() {
 		return this.idEntrada;
 	}
 
-	public void setIdEntrada(Long idEntrada) {
+	public void setIdEntrada(long idEntrada) {
 		this.idEntrada = idEntrada;
 	}
 
@@ -90,12 +90,12 @@ public class Ingreso implements Serializable {
 		this.observacion = observacion;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public Parqueadero getParqueadero() {
+		return this.parqueadero;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setParqueadero(Parqueadero parqueadero) {
+		this.parqueadero = parqueadero;
 	}
 
 	public Vehiculo getVehiculo() {
@@ -106,12 +106,12 @@ public class Ingreso implements Serializable {
 		this.vehiculo = vehiculo;
 	}
 
-	public Parqueadero getParqueadero() {
-		return this.parqueadero;
+	public Propietario getPropietario() {
+		return this.propietario;
 	}
 
-	public void setParqueadero(Parqueadero parqueadero) {
-		this.parqueadero = parqueadero;
+	public void setPropietario(Propietario propietario) {
+		this.propietario = propietario;
 	}
 
 }
