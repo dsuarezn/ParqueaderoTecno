@@ -89,3 +89,35 @@
     margin: -4px 0 0;
 }
 /* Inicio estilos informacion footer */
+
+
+
+/* Inicio se sobreescribe clear para bootstrap form-groups */
+
+.elementoFormUsuario{
+	height:40px;	
+}
+
+
+/* Fin se sobreescribe clear para bootstrap form-groups */
+
+
+/* Inicio colores para los iconos de bootstrap */
+
+.glyphicon-minus{
+	color: #669999;	
+}
+
+.glyphicon-ok{
+	color: #00CC00;	
+}
+
+.glyphicon-pencil{
+	color: #FFCC66;
+}
+
+.glyphicon-remove{
+	color: #FF0000
+}
+
+/* Fin colores para los iconos de bootstrap */

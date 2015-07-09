@@ -19,7 +19,7 @@ import co.edu.udistrital.dao.interfaces.VehiculosDAO;
 
 
 @Repository
-@Qualifier("DAOFactory")
+@Qualifier("daoFactory")
 public class DAOFactory {
 	//TODO: evaluar porque se podria o no hacer estaticos los DAOs
 	public DAOFactory() {

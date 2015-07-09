@@ -19,7 +19,7 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<sec:http auto-config="true">		
- 		<sec:intercept-url pattern="/views/**" access="hasRole('SUPERUSER')" />
+ 		<sec:intercept-url pattern="/views/**" access="isAuthenticated()" />
  		<sec:intercept-url pattern="/public/**" access="permitAll" />
  		<sec:intercept-url pattern="/resources/**" access="permitAll" />
  		<sec:intercept-url pattern="/login**" access="permitAll" /> 		

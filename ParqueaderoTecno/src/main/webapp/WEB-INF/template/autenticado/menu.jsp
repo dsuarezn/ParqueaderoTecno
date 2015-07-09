@@ -1,14 +1,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<spring:url value="/usuarios/crear"  var="usuarios_crear"/>
+<spring:url value="/usuarios/listar" var="usuarios_listar"/>
+
 <div class="menu"> 		  
       <div id="MainMenu">
         <div class="list-group panel">    
         <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUSER')">
         	<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.usuarios"/></a>
-          	<div class="collapse" id="demo3">
-            	<a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1"><spring:message code="menu.labels.usuarios.crear"/><i class="fa fa-caret-down"></i></a>
-            	<a href="javascript:;" class="list-group-item"><spring:message code="menu.labels.usuarios.consulta"/></a>            
+          	<div class="collapse" id="demo3">            	
+            	<a href="${usuarios_crear}" class="list-group-item"><spring:message code="menu.labels.usuarios.crear"/></a>
+            	<a href="${usuarios_listar}" class="list-group-item"><spring:message code="menu.labels.usuarios.consulta"/></a>            
           	</div>
 		</sec:authorize>
         <sec:authorize access="hasAnyRole('ROLE_ASISTENTE','ROLE_SUSER')">

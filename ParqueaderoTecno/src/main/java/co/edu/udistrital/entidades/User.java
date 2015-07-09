@@ -1,7 +1,11 @@
 package co.edu.udistrital.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 /**
@@ -18,7 +22,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false, length=45)
 	private String username;
 
@@ -29,11 +33,24 @@ public class User implements Serializable {
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne(fetch=FetchType.LAZY)
+	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name="roles", nullable=false)
 	private Role role;
 
 	public User() {
 	}
+	
+	
+
+	public User(String username, Boolean enable, String password, Role role) {
+		super();
+		this.username = username;
+		this.enable = enable;
+		this.password = password;
+		this.role = role;
+	}
+
+
 
 	public String getUsername() {
 		return this.username;

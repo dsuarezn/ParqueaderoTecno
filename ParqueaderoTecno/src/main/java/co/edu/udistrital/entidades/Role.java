@@ -1,7 +1,9 @@
 package co.edu.udistrital.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -16,7 +18,7 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false, length=20)
 	private String nombre;
 
@@ -29,6 +31,15 @@ public class Role implements Serializable {
 
 	public Role() {
 	}
+	
+	
+
+	public Role(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+
 
 	public String getNombre() {
 		return this.nombre;

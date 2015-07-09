@@ -13,8 +13,8 @@
 	<definition extends="public" name="resourceNotFound">
 		<put-attribute name="body" value="/WEB-INF/views/resourceNotFound.jsp"/>
 	</definition>
-	 
 	<definition extends="public" name="uncaughtException">
+	 
 		<put-attribute name="body" value="/WEB-INF/views/uncaughtException.jsp"/>
 	</definition>
 	

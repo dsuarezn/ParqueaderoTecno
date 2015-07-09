@@ -16,7 +16,7 @@ public class Propietario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false, precision=10)
 	private Long cedula;
 

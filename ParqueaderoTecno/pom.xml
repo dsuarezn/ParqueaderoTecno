@@ -189,7 +189,12 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-				
+		<!-- Collections Utils-->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>	
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
