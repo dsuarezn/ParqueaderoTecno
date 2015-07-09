@@ -15,7 +15,7 @@
 	
 	
 	<context:component-scan base-package="co.edu.udistrital.*" />	
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 	
 	<!-- Se crea el datasource simple a partir de dbcp2 -->
 	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -42,6 +42,7 @@
 
   	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     	<property name="entityManagerFactory" ref="entityManagerFactory" />
+    	<qualifier value="txManagerParqueadero"/>
   	</bean>
 		
 </beans>

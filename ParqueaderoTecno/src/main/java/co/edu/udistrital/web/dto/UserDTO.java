@@ -7,11 +7,11 @@ public class UserDTO {
 	
 	private String password;
 
-	private Boolean enable;
+	private boolean enable;
 	
 	private String rolename;
 	
-	private Boolean esCrear;
+	private boolean esCrear;
 
 	public String getUsername() {
 		return username;
@@ -21,11 +21,11 @@ public class UserDTO {
 		this.username = username;
 	}
 
-	public Boolean getEnable() {
+	public boolean getEnable() {
 		return enable;
 	}
 
-	public void setEnable(Boolean enable) {
+	public void setEnable(boolean enable) {
 		this.enable = enable;
 	}
 
@@ -45,11 +45,11 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public Boolean getEsCrear() {
+	public boolean getEsCrear() {
 		return esCrear;
 	}
 
-	public void setEsCrear(Boolean esCrear) {
+	public void setEsCrear(boolean esCrear) {
 		this.esCrear = esCrear;
 	}
 
