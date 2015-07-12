@@ -49,6 +49,19 @@ public class Propietario implements Serializable {
 	private List<Vehiculo> vehiculos;
 
 	public Propietario() {
+		
+	}
+	
+	public Propietario(Long cedula, String apellido, boolean estado, String foto, String nombre, String telFijo, String telMovil, String tipoPropietario) {
+		super();
+		this.cedula = cedula;
+		this.apellido = apellido;
+		this.estado = estado;
+		this.foto = foto;
+		this.nombre = nombre;
+		this.telFijo = telFijo;
+		this.telMovil = telMovil;
+		this.tipoPropietario = tipoPropietario;
 	}
 
 	public Long getCedula() {

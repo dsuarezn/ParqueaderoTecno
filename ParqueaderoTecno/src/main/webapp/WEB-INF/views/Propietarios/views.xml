@@ -2,12 +2,12 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 	
-	<definition extends="autenticado" name="usuarios/listar">
-		<put-attribute name="body" value="/WEB-INF/views/Propietarios/listar.jsp"/>
+	<definition extends="autenticado" name="crearPropietarios">
+		<put-attribute name="body" value="/WEB-INF/views/Propietarios/modificar.jsp"/>
 	</definition>
 	
-	<definition extends="autenticado" name="usuarios/modificar">
-		<put-attribute name="body" value="/WEB-INF/views/Propietarios/modificar.jsp"/>
+	<definition extends="autenticado" name="listarPropietarios">
+		<put-attribute name="body" value="/WEB-INF/views/Propietarios/listar.jsp"/>
 	</definition>
 	
 </tiles-definitions>
