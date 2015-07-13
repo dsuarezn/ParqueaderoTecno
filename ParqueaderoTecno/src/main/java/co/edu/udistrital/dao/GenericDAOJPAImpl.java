@@ -16,10 +16,8 @@ public class GenericDAOJPAImpl<T, PK extends Serializable>
     protected EntityManager em;
 	
 	 public GenericDAOJPAImpl() {
-	        ParameterizedType genericSuperclass = (ParameterizedType) getClass()
-	             .getGenericSuperclass();
-	        this.entityClass = (Class<T>) genericSuperclass
-	             .getActualTypeArguments()[0];
+	        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+	        this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
 	    }
 	
 	@Override

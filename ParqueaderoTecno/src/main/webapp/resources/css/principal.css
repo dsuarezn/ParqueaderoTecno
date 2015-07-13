@@ -105,6 +105,9 @@
 .elementoFormUsuario{
 	height:40px;	
 }
+.elementoFormPropietario{
+	height:40px;	
+}
 
 
 /* Fin se sobreescribe clear para bootstrap form-groups */

@@ -1,9 +1,96 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"  %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<spring:url value="/propietarios/modificarAction" var="modificarUrl" htmlEscape="true"/>
+
+
+<c:if test="${not empty propietario}">	
+	<c:choose>
+	    <c:when test="${propietario.esCrear == true}">
+	     	<c:set var="buttonName">
+	     		<spring:message code="modificarPropietario.buttons.submit.crear"/>
+	     	</c:set>
+	     	<c:set var="viewTittle">
+	     		<spring:message code="modificarPropietario.labels.titulo.crear"/>
+	     	</c:set>
+	    </c:when>
+	    <c:when test="${propietario.esCrear == false}">
+	        <c:set var="buttonName">
+	     		<spring:message code="modificarPropietario.buttons.submit.modificar"/>
+	     	</c:set>
+	     	<c:set var="viewTittle">
+	     		<spring:message code="modificarPropietario.labels.titulo.modificar"/>
+	     	</c:set>
+	    </c:when>
+	</c:choose>
+</c:if>
 <div class="body">
-    <h1>Modificar Usuarios</h1>
-
-    <p>The time on the server is ${serverTime}.</p>
-    <p>Este es un mensaje de bienvenida</P>
+    <h1><c:out value="${viewTittle}"/></h1>    
+	<form class="form-horizontal" role="form" action="${modificarUrl}" method="POST">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="hidden" name="esCrear" value="${propietario.esCrear}" />
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="tipoPropietario"><spring:message code="modificarPropietario.labels.tipoPropietario"/></label>
+	    <div class="col-sm-3"> 	      	
+			<select id="tipoPropietario" name="tipoPropietario" class="form-control">
+				<option value="<spring:message code="modificarPropietario.labels.directivo"/>"><spring:message code="modificarPropietario.labels.directivo"/></option>
+				<option value="<spring:message code="modificarPropietario.labels.docente"/>"><spring:message code="modificarPropietario.labels.docente"/></option>
+				<option value="<spring:message code="modificarPropietario.labels.estudiante"/>"><spring:message code="modificarPropietario.labels.estudiante"/></option>				
+			</select>	      
+	    </div>
+	  </div>
+	  
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="cedula"><spring:message code="modificarPropietario.labels.cedula"/></label>
+	    <div class="col-sm-3">
+	      <input type="text" class="form-control" id="cedula" name="cedula" placeholder="<spring:message code="modificarPropietario.labels.placeholder.cedula"/>">
+	    </div>
+	  </div>
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="nombre"><spring:message code="modificarPropietario.labels.nombre"/></label>
+	    <div class="col-sm-3">
+	      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="<spring:message code="modificarPropietario.labels.placeholder.nombre"/>">
+	    </div>
+	  </div>
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="apellido"><spring:message code="modificarPropietario.labels.apellido"/></label>
+	    <div class="col-sm-3">
+	      <input type="text" class="form-control" id="apellido" name="apellido" placeholder="<spring:message code="modificarPropietario.labels.placeholder.apellido"/>">
+	    </div>
+	  </div>
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="telFijo"><spring:message code="modificarPropietario.labels.telFijo"/></label>
+	    <div class="col-sm-3">
+	      <input type="text" class="form-control" id="telFijo" name="telFijo" placeholder="<spring:message code="modificarPropietario.labels.placeholder.telFijo"/>">
+	    </div>
+	  </div>
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="telMovil"><spring:message code="modificarPropietario.labels.telMovil"/></label>
+	    <div class="col-sm-3">
+	      <input type="text" class="form-control" id="telMovil" name="telMovil" placeholder="<spring:message code="modificarPropietario.labels.placeholder.telMovil"/>">
+	    </div>
+	  </div>
+	  
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="foto"><spring:message code="modificarPropietario.labels.foto"/></label>
+	    <div class="col-sm-3">
+			<input type="file" class="file" id="foto" name="foto">     
+	    </div>
+	  </div>
+	  
+	  <div class="form-group elementoFormPropietario">
+	    <label class="control-label col-sm-2" for="estado"><spring:message code="modificarUsuario.labels.habilitado"/></label>
+	    <div class="col-sm-3 text-left"> 
+	      <input type="checkbox" class="form-control" id="estado" name="estado">
+	    </div>
+	  </div>
+	  
+	  <div class="form-group elementoFormPropietario"> 
+	    <div class="col-sm-offset-2 col-sm-10">
+	    
+	    <button type="submit" class="btn btn-default"><c:out value="${buttonName}"/></button>
+	    </div>
+	  </div>
+	</form>
 </div>
- 

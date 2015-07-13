@@ -1,8 +1,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<spring:url value="/usuarios/crear"  var="usuarios_crear"/>
+<spring:url value="/usuarios/crear" var="usuarios_crear" />
 <spring:url value="/usuarios/listar" var="usuarios_listar"/>
+<spring:url value="/propietarios/crear"  var="propietarios_crear"/>
+<spring:url value="/propietarios/listar"  var="propietarios_listar"/>
 
 <div class="menu"> 		  
       <div id="MainMenu">
@@ -17,8 +19,8 @@
         <sec:authorize access="hasAnyRole('ROLE_ASISTENTE','ROLE_SUSER')">
         	<a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.propietarios"/></a>
             <div class="collapse" id="demo4">
-	            <a href="" class="list-group-item"><spring:message code="menu.labels.propietarios.crear"/></a>
-	            <a href="" class="list-group-item"><spring:message code="menu.labels.propietarios.consulta"/></a>
+	            <a href="${propietarios_crear}" class="list-group-item"><spring:message code="menu.labels.propietarios.crear"/></a>
+	            <a href="${propietarios_listar}" class="list-group-item"><spring:message code="menu.labels.propietarios.consulta"/></a>
 	            <a href="" class="list-group-item"><spring:message code="menu.labels.propietarios.carne"/></a>            
          	</div>  
         	<a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.parqueaderos"/></a>
