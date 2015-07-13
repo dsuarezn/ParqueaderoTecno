@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	
+	<definition extends="autenticado" name="listarRegistro">
+		<put-attribute name="body" value="/WEB-INF/views/Registro/listar.jsp"/>
+	</definition>
+	
+	<definition extends="autenticado" name="crearRegistro">
+		<put-attribute name="body" value="/WEB-INF/views/Registro/modificar.jsp"/>
+	</definition>
+	
+</tiles-definitions>
