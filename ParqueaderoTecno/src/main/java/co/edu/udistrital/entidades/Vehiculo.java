@@ -1,7 +1,9 @@
 package co.edu.udistrital.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -11,7 +13,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="vehiculos")
-@NamedQuery(name="Vehiculo.findAll", query="SELECT v FROM Vehiculo v")
+@NamedQueries({
+	@NamedQuery(name="Vehiculo.findAll", query="SELECT v FROM Vehiculo v"),
+	@NamedQuery(name="Vehiculo.findByCedula", query="SELECT v FROM Vehiculo v WHERE v.propietario.cedula = :cedula")
+})
 public class Vehiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 

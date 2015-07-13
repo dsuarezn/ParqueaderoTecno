@@ -1,7 +1,9 @@
 package co.edu.udistrital.web.dto;
 
 
-public class UserDTO {
+public class UserWebDTO {
+	
+		
 
 	private String username;
 	

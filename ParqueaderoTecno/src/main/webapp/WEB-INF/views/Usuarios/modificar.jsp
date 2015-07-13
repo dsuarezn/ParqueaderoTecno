@@ -33,13 +33,13 @@
 	  <div class="form-group elementoFormUsuario">
 	    <label class="control-label col-sm-2" for="username"><spring:message code="modificarUsuario.labels.usuario"/></label>
 	    <div class="col-sm-3">
-	      <input type="text" class="form-control" id="username" name="username" placeholder="<spring:message code="modificarUsuario.labels.placeholder.usuario"/>">
+	      <input type="text" class="form-control" id="username" name="username" value="${user.username}" placeholder="<spring:message code="modificarUsuario.labels.placeholder.usuario"/>" ${user.esCrear != true ? 'readonly' : ' '}>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormUsuario">
 	    <label class="control-label col-sm-2" for="password"><spring:message code="modificarUsuario.labels.contrasena"/></label>
 	    <div class="col-sm-3"> 
-	      <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="modificarUsuario.labels.placeholder.contrasena"/>">
+	      <input type="password" autocomplete="off" class="form-control" id="password" name="password" placeholder="<spring:message code="modificarUsuario.labels.placeholder.contrasena"/>">
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormUsuario">
@@ -47,16 +47,15 @@
 	    <div class="col-sm-3"> 	      	
 			<select id="rolename" name="rolename" class="form-control">
 				<c:forEach var="role" items="${roleslist}">
-					<option value="${role.nombre}"><c:out value="${role.descripcion}"/></option>
+					<option value="${role.nombre}" ${user.rolename eq role.nombre ? 'selected' : ' '}><c:out value="${role.descripcion}"/></option>
 				</c:forEach>
-			</select>
-	      
+			</select>	      
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormUsuario">
 	    <label class="control-label col-sm-2" for="enable"><spring:message code="modificarUsuario.labels.habilitado"/></label>
 	    <div class="col-sm-3 text-left"> 
-	      <input type="checkbox" class="form-control" id="enable" name="enable">
+	      <input type="checkbox" class="form-control" ${user.enable == true ? 'checked' : ' '} id="enable" name="enable">
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormUsuario"> 
@@ -67,3 +66,4 @@
 	  </div>
 	</form>
 </div>
+
