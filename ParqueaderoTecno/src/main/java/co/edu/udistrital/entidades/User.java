@@ -16,7 +16,7 @@ import org.hibernate.annotations.FetchMode;
 @Table(name="users")
 @NamedQueries({
 	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
-	@NamedQuery(name="User.findByName", query="SELECT u FROM User u WHERE u.username = :name and u.enable=true")
+	@NamedQuery(name="User.findByName", query="SELECT u FROM User u WHERE u.username = :name")
 })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;

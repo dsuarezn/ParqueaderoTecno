@@ -17,11 +17,9 @@ import co.edu.udistrital.entidades.User;
 @Transactional
 @Service
 @Qualifier("roleServiceImpl")
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends ServiceCommons implements RoleService {
 
-	@Autowired
-	private DAOFactory daoFactory;
-
+	
 	@Override
 	public List<Role> buscarTodosRoles() {
 		return daoFactory.getRoleDAOImpl().findAllRoles();

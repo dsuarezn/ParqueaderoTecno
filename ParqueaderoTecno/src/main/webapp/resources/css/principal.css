@@ -30,7 +30,11 @@
     }
  
     .body {
-        margin:50px 10px 0px 250px;
+        margin:3px 10px 0px 250px;
+    }
+    
+    .mensajes{
+    	  margin: 50px 0 0 250px;
     }
      
     .footer {
@@ -41,6 +45,10 @@
         text-align:center;
         width:100%;
         height:20px;
+    }
+    
+     .mensajes{    	  
+    	  
     }
     
 /* Inicio estilos para la division de la plantilla */ 

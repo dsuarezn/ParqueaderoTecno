@@ -7,6 +7,7 @@
     <definition name="autenticado" template="/WEB-INF/template/autenticado/template.jsp">
         <put-attribute name="header" value="/WEB-INF/template/autenticado/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/template/autenticado/menu.jsp" />
+        <put-attribute name="mensajes" value="/WEB-INF/template/autenticado/mensajes.jsp" />
         <put-attribute name="footer" value="/WEB-INF/template/autenticado/footer.jsp" />
     </definition>
     

@@ -29,13 +29,6 @@ import org.springframework.security.core.userdetails.User;
 @Qualifier("customUserDetailsServiceImpl")
 public class CustomUserDetailsServiceImpl extends ServiceCommons implements CustomUserDetailsService {
 
-	@Autowired
-	private DAOFactory daoFactory;	
-	
-	@Autowired
-	private MessageSource messageSource;
-	
-	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, PersistenceException {
 		co.edu.udistrital.entidades.User buser = daoFactory.getUserDAOImpl().findUserByName(username);		
@@ -70,6 +63,13 @@ public class CustomUserDetailsServiceImpl extends ServiceCommons implements Cust
 	@Override
 	public void borrarUsuario(co.edu.udistrital.entidades.User usuario) throws PersistenceException {
 		daoFactory.getUserDAOImpl().delete(usuario);
+	}
+
+
+	@Override
+	public co.edu.udistrital.entidades.User buscarUsuarioPorNombre(
+			String usuario) throws PersistenceException {
+		return daoFactory.getUserDAOImpl().findUserByName(usuario);
 	}
 
 

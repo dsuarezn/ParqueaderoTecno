@@ -20,5 +20,6 @@ public interface CustomUserDetailsService extends UserDetailsService {
 	
 	public void borrarUsuario(User usuario) throws PersistenceException;
 	
+	public User buscarUsuarioPorNombre(String usuario) throws PersistenceException;
 
 }
