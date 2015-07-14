@@ -41,12 +41,13 @@
 
 						<td>
 						
-							<button type="button" class="btn btn-default btn-lg">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-							</button>
-							<button type="button" class="btn btn-default btn-lg">
-								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-							</button></td>
+						<a class="btn btn-default btn-lg" href="<c:url value='/parqueaderos/editar/${parqueaderoItem.tipoParqueadero}' />" >			    				
+								  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						</a>						
+						<a class="btn btn-default btn-lg eliminarConfirm" href="<c:url value='/parqueaderos/eliminar/${parqueaderoItem.tipoParqueadero}' />" >							
+							  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>							
+						</a>
+						
 					</tr>
 				</c:forEach>
 			</tbody>

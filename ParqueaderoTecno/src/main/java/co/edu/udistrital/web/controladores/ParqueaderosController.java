@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,12 +34,7 @@ public class ParqueaderosController {
 		List<ParqueaderoDTO> listaParqueaderoForm=new ArrayList<ParqueaderoDTO>();
 				
 		for (Parqueadero parqueadero : listParqueaderos) {
-			ParqueaderoDTO form = new ParqueaderoDTO();
-			form.setTipoParqueadero(parqueadero.getTipoParqueadero());
-			form.setEspacios(parqueadero.getEspacios());
-			form.setEstado(parqueadero.getEstado());
-			form.setIngresos(parqueadero.getIngresos());
-			listaParqueaderoForm.add(form);
+			listaParqueaderoForm.add(maskParqueaderoInDTO(parqueadero));
 		}
 		
 		model.addAttribute("listParqueadero", listaParqueaderoForm);
@@ -77,22 +73,34 @@ public class ParqueaderosController {
 	}
 	
 	
-	@RequestMapping(value = "/modificar", method = RequestMethod.POST)
-	public String vistaModificar(ParqueaderoDTO parqueaderoDTO, Model model) {
+	@RequestMapping(value = "/editar/{tipoParqueadero}", method = RequestMethod.GET)
+	public String vistaModificar(@PathVariable String tipoParqueadero, Model model) {
 		logger.info("Devolviendo la vista de modificar parqueaderos");
+		Parqueadero parqueadero=customParqueaderoDetailsServiceImpl.loadParqueaderoByTipo(tipoParqueadero);
+		ParqueaderoDTO parqueaderoDTO = maskParqueaderoInDTO(parqueadero);
 		parqueaderoDTO.setEsCrear(false);
 		model.addAttribute("parqueadero",parqueaderoDTO);		
 		return "crearParqueaderos";
 	}
 	
 	
-	@RequestMapping(value = "/eliminar", method = RequestMethod.POST)
-	public String eliminar(ParqueaderoDTO parqueaderoDTO, Model model) {
-		logger.info("Eliminando parqueadero: "+parqueaderoDTO.getTipoParqueadero());		
-		Parqueadero parqueaderoToDelete  = customParqueaderoDetailsServiceImpl.loadParqueaderoByTipo(parqueaderoDTO.getTipoParqueadero());
+	@RequestMapping(value = "/eliminar/{tipoParqueadero}", method = RequestMethod.GET)
+	public String eliminar(@PathVariable String tipoParqueadero, Model model) {
+		logger.info("Eliminando parqueadero: "+tipoParqueadero);		
+		Parqueadero parqueaderoToDelete  = customParqueaderoDetailsServiceImpl.loadParqueaderoByTipo(tipoParqueadero);
 		customParqueaderoDetailsServiceImpl.borrarParqueadero(parqueaderoToDelete);
 		
 		return listar(model);
 	}
 
+	public ParqueaderoDTO maskParqueaderoInDTO(Parqueadero parqueadero) {
+		ParqueaderoDTO form = new ParqueaderoDTO();
+		form.setTipoParqueadero(parqueadero.getTipoParqueadero());
+		form.setEspacios(parqueadero.getEspacios());
+		form.setEstado(parqueadero.getEstado());
+		form.setIngresos(parqueadero.getIngresos());
+		
+		return form;
+	}
+	
 }
