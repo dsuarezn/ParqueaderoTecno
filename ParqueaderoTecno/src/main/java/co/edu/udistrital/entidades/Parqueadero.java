@@ -1,7 +1,9 @@
 package co.edu.udistrital.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -11,7 +13,10 @@ import java.util.List;
  */
 @Entity
 @Table(name="parqueadero")
-@NamedQuery(name="Parqueadero.findAll", query="SELECT p FROM Parqueadero p")
+@NamedQueries({
+	@NamedQuery(name="Parqueadero.findAll", query="SELECT p FROM Parqueadero p"),
+	@NamedQuery(name="Parqueadero.findByTipo", query="SELECT u FROM Parqueadero u WHERE u.tipoParqueadero = :tipo and u.estado=true")
+})
 public class Parqueadero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +32,8 @@ public class Parqueadero implements Serializable {
 	@OneToMany(mappedBy="parqueadero")
 	private List<Ingreso> ingresos;
 
+	private Boolean estado;
+
 	public Parqueadero() {
 	}
 	
@@ -34,6 +41,19 @@ public class Parqueadero implements Serializable {
 		this.tipoParqueadero=tipo;
 		this.espacios=espacios;
 	}
+
+	
+	
+	public Parqueadero(String tipoParqueadero, int espacios,
+			List<Ingreso> ingresos, Boolean estado) {
+		super();
+		this.tipoParqueadero = tipoParqueadero;
+		this.espacios = espacios;
+		this.ingresos = ingresos;
+		this.estado = estado;
+	}
+
+
 
 	public String getTipoParqueadero() {
 		return this.tipoParqueadero;
@@ -59,6 +79,14 @@ public class Parqueadero implements Serializable {
 		this.ingresos = ingresos;
 	}
 
+	public Boolean getEstado() {
+		return estado;
+	}
+	
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+	
 	public Ingreso addIngreso(Ingreso ingreso) {
 		getIngresos().add(ingreso);
 		ingreso.setParqueadero(this);

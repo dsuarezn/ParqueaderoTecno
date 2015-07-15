@@ -10,14 +10,6 @@
         <div class="navbar-header">
            <a class="navbar-brand" href="#"><spring:message code="global.app.name"/></a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">         
-          <ul class="nav navbar-nav navbar-right">           
-            <c:if test="${pageContext.request.userPrincipal.name != null}">
-					<li> <a class="headerLoggedUserCapitalize"><spring:message code="header.labels.welcome"/> ${pageContext.request.userPrincipal.name} </a> </li>
-					<li><a href="javascript:formSubmit()"> <spring:message code="global.salir"/></a></li>
-			</c:if>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </nav>
     

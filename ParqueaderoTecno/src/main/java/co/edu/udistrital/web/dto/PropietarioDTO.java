@@ -3,7 +3,7 @@ package co.edu.udistrital.web.dto;
 
 public class PropietarioDTO {
 	
-	private Long cedula;
+	private long cedula;
 	
 	private String nombre;
 	
@@ -21,11 +21,11 @@ public class PropietarioDTO {
 	
 	private boolean esCrear;
 	
-	public Long getCedula() {
+	public long getCedula() {
 		return cedula;
 	}
 
-	public void setCedula(Long cedula) {
+	public void setCedula(long cedula) {
 		this.cedula = cedula;
 	}
 	

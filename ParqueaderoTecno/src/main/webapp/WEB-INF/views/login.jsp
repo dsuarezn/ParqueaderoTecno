@@ -22,10 +22,10 @@
 		    </div>
 	</c:if>
 	
-	
+	<center><img alt="logoUD" src="<c:url value="/resources/images/logoUD.png"  />"></center>
 	
 	<form class="form-signin" action="<c:url value='j_spring_security_check' />" method="POST">
-		<h2 class="form-signin-heading"><spring:message code="login.labels.titulo"/></h2>
+		<!-- h2 class="form-signin-heading"><spring:message code="login.labels.titulo"/></h2-->
         <label for="username" class="sr-only"><spring:message code="login.labels.usuario"/></label>
         <input id="j_username" name="j_username" type="text" class="form-control" placeholder="<spring:message code="login.labels.usuario"/>" required autofocus/>
         <label for="password" class="sr-only"><spring:message code="login.labels.contrasena"/></label>

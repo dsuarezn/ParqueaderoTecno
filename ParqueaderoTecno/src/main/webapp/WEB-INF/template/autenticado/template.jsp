@@ -7,15 +7,21 @@
     <meta name="_csrf" content="${_csrf.token}"/>    
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title><spring:message code="template.view.tittle"/></title>
+    <link rel="icon" type="image/png" href="<c:url value="/resources/images/faviconUD.png" />" />
     
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<link href="<c:url value="/resources/css/principal.css" />" rel="stylesheet">
     	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
     	<link href="<c:url value="/resources/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet">
+		<link href="<c:url value="/resources/css/jasny-bootstrap.css" />" rel="stylesheet">
+    	<link href="<c:url value="/resources/css/jasny-bootstrap.min.css" />" rel="stylesheet">
     	<script src="<c:url value="/resources/js/jquery-1.11.3.min.js" />"></script>
     	<script src="<c:url value="/resources/js/bootstrap.min.js"  />" ></script>
       	<script src="<c:url value="/resources/js/bootbox.min.js"  />" ></script>
       	<script src="<c:url value="/resources/js/bootstrap-datetimepicker.min.js"  />" ></script>      	
+	    <script src="<c:url value="/resources/js/bootbox.min.js"  />" ></script>
+      	<script src="<c:url value="/resources/js/jasny-bootstrap.js"  />" ></script>
+      	<script src="<c:url value="/resources/js/jasny-bootstrap.min.js"  />" ></script>
 </head>
 <body>
     <div class="page">
