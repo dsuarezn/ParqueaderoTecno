@@ -20,8 +20,7 @@
         	<a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.propietarios"/></a>
             <div class="collapse" id="demo4">
 	            <a href="${propietarios_crear}" class="list-group-item"><spring:message code="menu.labels.propietarios.crear"/></a>
-	            <a href="${propietarios_listar}" class="list-group-item"><spring:message code="menu.labels.propietarios.consulta"/></a>
-	            <a href="" class="list-group-item"><spring:message code="menu.labels.propietarios.carne"/></a>            
+	            <a href="${propietarios_listar}" class="list-group-item"><spring:message code="menu.labels.propietarios.consulta"/></a>      
          	</div>  
         	<a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.parqueaderos"/></a>
           	<div class="collapse" id="demo5">

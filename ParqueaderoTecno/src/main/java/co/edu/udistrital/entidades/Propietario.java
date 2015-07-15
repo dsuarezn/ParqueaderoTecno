@@ -11,7 +11,11 @@ import java.util.List;
  */
 @Entity
 @Table(name="propietario")
-@NamedQuery(name="Propietario.findAll", query="SELECT p FROM Propietario p")
+@NamedQueries({
+		@NamedQuery(name="Propietario.findAll", query="SELECT p FROM Propietario p"),
+		@NamedQuery(name="Propietario.findByCC", query="SELECT p FROM Propietario p WHERE p.cedula = :cedula")
+})
+
 public class Propietario implements Serializable {
 	private static final long serialVersionUID = 1L;
 

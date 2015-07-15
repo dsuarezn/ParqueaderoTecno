@@ -11,12 +11,21 @@
            <a class="navbar-brand" href="#"><spring:message code="global.app.name"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">         
-          <ul class="nav navbar-nav navbar-right">           
-            <c:if test="${pageContext.request.userPrincipal.name != null}">
-					<li> <a class="headerLoggedUserCapitalize"><spring:message code="header.labels.welcome"/> ${pageContext.request.userPrincipal.name} </a> </li>
-					<li><a href="javascript:formSubmit()"> <spring:message code="global.salir"/></a></li>
-			</c:if>
-          </ul>
+        <ul class="nav navbar-nav navbar-right">
+        	<li class="dropdown">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          <c:if test="${pageContext.request.userPrincipal.name != null}">
+		          <spring:message code="header.labels.welcome"/> ${pageContext.request.userPrincipal.name} 
+		          </c:if>
+          			<span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="#"> <spring:message code="header.labels.changePassword"/></a></li>
+		            <li role="separator" class="divider"></li>
+		            <li><a href="javascript:formSubmit()"> <spring:message code="global.salir"/></a></li>
+		          </ul>
+        	</li>
+      	</ul>
+          
         </div><!--/.nav-collapse -->
       </div>
     </nav>
