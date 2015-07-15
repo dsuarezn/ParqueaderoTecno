@@ -23,13 +23,12 @@ public class PropietariosController extends CommonController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PropietariosController.class);
 	
-	@Autowired
-	private PropietarioService PropietarioServiceImpl; 
+	 
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		logger.info("Devolviendo la vista de listar propietarios");
-		List<Propietario> listapropietario = PropietarioServiceImpl.findAllPropietarios();
+		List<Propietario> listapropietario = propietarioServiceImpl.findAllPropietarios();
 		List<PropietarioDTO> listaPropietarioForm=new ArrayList<PropietarioDTO>();
 		for (Propietario propietario : listapropietario) {
 			PropietarioDTO form = new PropietarioDTO();
@@ -69,7 +68,7 @@ public class PropietariosController extends CommonController {
 	}
 	
 	private Propietario crearPropietario(PropietarioDTO propietario){
-		return PropietarioServiceImpl.crearPropietario(new Propietario(Long.valueOf(propietario.getCedula()),propietario.getApellido(),propietario.getEstado(),"null",propietario.getNombre(),propietario.getTelFijo(),propietario.getTelMovil(),propietario.getTipoPropietario()));
+		return propietarioServiceImpl.crearPropietario(new Propietario(Long.valueOf(propietario.getCedula()),propietario.getApellido(),propietario.getEstado(),"null",propietario.getNombre(),propietario.getTelFijo(),propietario.getTelMovil(),propietario.getTipoPropietario()));
 	}
 	/*
 	private User modificarUser(UserDTO usuario){

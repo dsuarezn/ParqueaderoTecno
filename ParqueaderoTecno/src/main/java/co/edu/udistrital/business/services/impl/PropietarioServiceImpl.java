@@ -21,17 +21,15 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.udistrital.business.services.CustomUserDetailsService;
 import co.edu.udistrital.business.services.PropietarioService;
 import co.edu.udistrital.dao.DAOFactory;
+import co.edu.udistrital.entidades.Propietario;
 
 
 @Transactional
 @Service
 @Qualifier("propietarioServiceImpl")
 public class PropietarioServiceImpl extends ServiceCommons implements PropietarioService {
-	@Autowired
-	private DAOFactory daoFactory;
 	
-	@Autowired
-	private MessageSource messageSource;
+	
 	
 	/*
 	@Override
@@ -70,4 +68,12 @@ public class PropietarioServiceImpl extends ServiceCommons implements Propietari
 		daoFactory.getUserDAOImpl().delete(usuario);
 	}
 */
+
+
+	@Override
+	public Propietario findPropietarioById(Long Id)
+			throws PersistenceException {
+		return daoFactory.getPropietarioDAOImpl().findPropietariosById(Id);
+		
+	}
 }

@@ -5,6 +5,8 @@
 <spring:url value="/usuarios/listar" var="usuarios_listar"/>
 <spring:url value="/propietarios/crear"  var="propietarios_crear"/>
 <spring:url value="/propietarios/listar"  var="propietarios_listar"/>
+<spring:url value="/registro/crear"  var="registro_crear"/>
+<spring:url value="/registro/listar"  var="registro_listar"/>
 
 <div class="menu"> 		  
       <div id="MainMenu">
@@ -37,8 +39,8 @@
         <sec:authorize access="hasAnyRole('ROLE_GUARDIA','ROLE_SUSER')">
         	<a href="#demo7" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.registro"/></a>
             <div class="collapse" id="demo7">
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.registro.ingreso"/></a>
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.registro.salida"/></a>            
+            	<a href="${registro_crear}" class="list-group-item"><spring:message code="menu.labels.registro.ingreso"/></a>
+            	<a href="${registro_listar}" class="list-group-item"><spring:message code="menu.labels.registro.listar"/></a>            
          	</div>  	
         </sec:authorize>    	            	         	
         </div>

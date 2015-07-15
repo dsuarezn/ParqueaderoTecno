@@ -9,6 +9,8 @@ import co.edu.udistrital.entidades.Propietario;
 
 public interface PropietarioService {
 	
+	public Propietario findPropietarioById(Long Id) throws PersistenceException;
+	
 	public List<Propietario> findAllPropietarios() throws PersistenceException;
 	
 	public Propietario crearPropietario(Propietario propietario) throws PersistenceException;

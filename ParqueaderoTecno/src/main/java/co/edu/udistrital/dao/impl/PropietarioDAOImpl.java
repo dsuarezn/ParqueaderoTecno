@@ -2,6 +2,7 @@ package co.edu.udistrital.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.Id;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
@@ -23,6 +24,12 @@ public class PropietarioDAOImpl extends GenericDAOJPAImpl<Propietario, Long> imp
 		Query query = em.createNamedQuery("Propietario.findAll");		
 		List<Propietario> listapropietario = (List<Propietario>) query.getResultList();
 		return listapropietario;
+	}
+
+	@Override
+	public Propietario findPropietariosById(Long id)
+			throws PersistenceException {
+		return em.find(Propietario.class, id);		
 	}
 
 }

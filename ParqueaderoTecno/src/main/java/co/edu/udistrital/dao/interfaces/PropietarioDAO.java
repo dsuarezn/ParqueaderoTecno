@@ -10,4 +10,5 @@ import co.edu.udistrital.entidades.User;
 
 public interface PropietarioDAO extends GenericDAOInterface<Propietario, Long> {
 	public List<Propietario> findAllPropietarios() throws PersistenceException;
+	public Propietario findPropietariosById(Long id) throws PersistenceException;
 }

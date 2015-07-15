@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.util.List;
 
 
@@ -31,12 +34,16 @@ public class Vehiculo implements Serializable {
 	@Column(nullable=false, length=45)
 	private String marca;
 
+	@Column(nullable=false, length=20)
+	private String tipovehiculo;
+	
 	//bi-directional many-to-one association to Ingreso
 	@OneToMany(mappedBy="vehiculo")
 	private List<Ingreso> ingresos;
 
 	//bi-directional many-to-one association to Propietario
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)	
+	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name="cedula", nullable=false)
 	private Propietario propietario;
 
@@ -96,5 +103,15 @@ public class Vehiculo implements Serializable {
 	public void setPropietario(Propietario propietario) {
 		this.propietario = propietario;
 	}
+
+	public String getTipovehiculo() {
+		return tipovehiculo;
+	}
+
+	public void setTipovehiculo(String tipovehiculo) {
+		this.tipovehiculo = tipovehiculo;
+	}
+	
+	
 
 }

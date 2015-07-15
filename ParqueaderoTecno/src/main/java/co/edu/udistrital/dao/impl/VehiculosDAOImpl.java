@@ -25,4 +25,10 @@ public class VehiculosDAOImpl extends GenericDAOJPAImpl<Vehiculo, String> implem
 			return listauser;
 	}
 
+	@Override
+	public Vehiculo obtenerVehiculosPorPlaca(String placa)
+			throws PersistenceException {
+		return em.find(Vehiculo.class, placa);		
+	}
+
 }

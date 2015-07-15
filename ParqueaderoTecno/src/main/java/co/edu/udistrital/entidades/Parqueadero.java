@@ -21,13 +21,18 @@ public class Parqueadero implements Serializable {
 	private String tipoParqueadero;
 
 	@Column(nullable=false)
-	private int espacios;
+	private Integer espacios;
 
 	//bi-directional many-to-one association to Ingreso
 	@OneToMany(mappedBy="parqueadero")
 	private List<Ingreso> ingresos;
 
 	public Parqueadero() {
+	}
+	
+	public Parqueadero(String tipo, Integer espacios) {
+		this.tipoParqueadero=tipo;
+		this.espacios=espacios;
 	}
 
 	public String getTipoParqueadero() {
@@ -38,11 +43,11 @@ public class Parqueadero implements Serializable {
 		this.tipoParqueadero = tipoParqueadero;
 	}
 
-	public int getEspacios() {
+	public Integer getEspacios() {
 		return this.espacios;
 	}
 
-	public void setEspacios(int espacios) {
+	public void setEspacios(Integer espacios) {
 		this.espacios = espacios;
 	}
 

@@ -18,6 +18,8 @@
 		<hibernate.version>4.3.8.Final</hibernate.version>
 		<commons.dbcp.version>1.4</commons.dbcp.version>
 		<mysqlconn.version>5.0.5</mysqlconn.version>
+		<jackson.version>2.5.0</jackson.version>
+		<codehaus.version>1.9.13</codehaus.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -157,7 +159,21 @@
 			<version>${tiles.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.codehaus.jackson</groupId>
+	        <artifactId>jackson-mapper-asl</artifactId>
+	        <version>${codehaus.version}</version>
+	    </dependency> 		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>

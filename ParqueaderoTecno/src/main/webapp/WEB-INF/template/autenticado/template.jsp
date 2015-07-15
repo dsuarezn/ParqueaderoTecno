@@ -4,14 +4,18 @@
 <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="_csrf" content="${_csrf.token}"/>    
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title><spring:message code="template.view.tittle"/></title>
     
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<link href="<c:url value="/resources/css/principal.css" />" rel="stylesheet">
     	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+    	<link href="<c:url value="/resources/css/bootstrap-datetimepicker.min.css" />" rel="stylesheet">
     	<script src="<c:url value="/resources/js/jquery-1.11.3.min.js" />"></script>
     	<script src="<c:url value="/resources/js/bootstrap.min.js"  />" ></script>
-      	<script src="<c:url value="/resources/js/bootbox.min.js"  />" ></script>      	
+      	<script src="<c:url value="/resources/js/bootbox.min.js"  />" ></script>
+      	<script src="<c:url value="/resources/js/bootstrap-datetimepicker.min.js"  />" ></script>      	
 </head>
 <body>
     <div class="page">
@@ -40,6 +44,9 @@ $(document).ready(function(){
     $('.exitoAlert').delay(3000).fadeOut(1000);
     $('.infoAlert').delay(4000).fadeOut(1000);
     
+
+    
 });
+	
 </script>
 </html>

@@ -11,4 +11,6 @@ public interface VehiculosDAO extends GenericDAOInterface<Vehiculo, String>  {
 
 	public List<Vehiculo> obtenerVehiculosPorIdentificacion(Long cedula) throws PersistenceException;
 	
+	public Vehiculo obtenerVehiculosPorPlaca(String placa) throws PersistenceException;
+	
 }
