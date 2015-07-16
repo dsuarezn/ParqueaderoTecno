@@ -30,6 +30,7 @@ public class Vehiculo implements Serializable {
 
 	@Column(nullable=false, length=45)
 	private String marca;
+	
 
 	//bi-directional many-to-one association to Ingreso
 	@OneToMany(mappedBy="vehiculo")
@@ -43,6 +44,16 @@ public class Vehiculo implements Serializable {
 	public Vehiculo() {
 	}
 
+	public Vehiculo(String placa, String marca, String linea
+//			,Long cedula
+			) {
+		super();
+		this.placa = placa;
+		this.marca = marca;
+		this.linea = linea;
+//		this.cedula = cedula;
+	}
+	
 	public String getPlaca() {
 		return this.placa;
 	}
@@ -66,6 +77,15 @@ public class Vehiculo implements Serializable {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+	
+
+//	public Long getCedula() {
+//		return cedula;
+//	}
+
+//	public void setCedula(Long cedula) {
+//		this.cedula = cedula;
+//	}
 
 	public List<Ingreso> getIngresos() {
 		return this.ingresos;
@@ -96,5 +116,7 @@ public class Vehiculo implements Serializable {
 	public void setPropietario(Propietario propietario) {
 		this.propietario = propietario;
 	}
+
+
 
 }

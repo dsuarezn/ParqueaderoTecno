@@ -5,6 +5,8 @@
 <spring:url value="/usuarios/listar" var="usuarios_listar"/>
 <spring:url value="/propietarios/crear"  var="propietarios_crear"/>
 <spring:url value="/propietarios/listar"  var="propietarios_listar"/>
+<spring:url value="/vehiculos/crear"  var="vehiculos_crear"/>
+<spring:url value="/vehiculos/listar"  var="vehiculos_listar"/>
 
 <div class="menu"> 		  
       <div id="MainMenu">
@@ -30,8 +32,8 @@
           	</div>
           	<a href="#demo6" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.vehiculos"/></a>
             <div class="collapse" id="demo6">
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.vehiculos.crear"/></a>
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.vehiculos.consulta"/></a>            
+                <a href="${vehiculos_crear}" class="list-group-item"><spring:message code="menu.labels.vehiculos.crear"/></a>
+	            <a href="${vehiculos_listar}" class="list-group-item"><spring:message code="menu.labels.vehiculos.consulta"/></a>          
          	</div>
         </sec:authorize>    	
         <sec:authorize access="hasAnyRole('ROLE_GUARDIA','ROLE_SUSER')">
