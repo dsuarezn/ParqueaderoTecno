@@ -39,7 +39,7 @@ public class IngresosDAOImpl extends GenericDAOJPAImpl<Ingreso, Long> implements
 		query.setParameter("placa", filtrodto.getPlaca());
 		query.setParameter("fechaIngreso",null/*filtrodto.getFechaInicio()*/);
 		query.setParameter("fechaFin",null /*filtrodto.getFechaFin()*/);
-		return  query.getResultList();
+		return query.getResultList();
 	}
 
 		

@@ -56,9 +56,11 @@ public class ParqueaderosController {
 		logger.info("Entrando a modificar parqueadero en modo "+(parqueadero.getEsCrear()?"Creación":"Modificación"));
 		if(parqueadero.getEsCrear()){
 			crearParqueadero(parqueadero);
+			model.addAttribute("exito","Se ha creado el tipo de parqueadero exitosamente");
 		}
 		else{
 			modificarParqueadero(parqueadero);
+			model.addAttribute("exito","Se ha editado el tipo de parqueadero exitosamente");
 		}
 
 		return listar(model);

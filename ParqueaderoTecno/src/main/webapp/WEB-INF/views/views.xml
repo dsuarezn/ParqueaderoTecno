@@ -6,6 +6,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/welcome.jsp"/>
 	</definition>
 	
+	<definition extends="autenticado" name="about">
+		<put-attribute name="body" value="/WEB-INF/views/acercade.jsp"/>
+	</definition>
+	
 	<definition extends="public" name="dataAccessFailure">
 		<put-attribute name="body" value="/WEB-INF/views/dataAccessFailure.jsp"/>
 	</definition>

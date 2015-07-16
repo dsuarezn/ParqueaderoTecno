@@ -20,7 +20,7 @@
 		        <a href="#" class="close" data-dismiss="alert">&times;</a>
 		        <strong>Error!</strong> <spring:message code="login.labels.error"/>
 		    </div>
-	</c:if>
+ 	</c:if>
 	
 	<center><img alt="logoUD" src="<c:url value="/resources/images/logoUD.png"  />"></center>
 	

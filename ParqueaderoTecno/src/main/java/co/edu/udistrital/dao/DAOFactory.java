@@ -4,12 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import co.edu.udistrital.dao.impl.IngresosDAOImpl;
-import co.edu.udistrital.dao.impl.ParqueaderoDAOImpl;
-import co.edu.udistrital.dao.impl.PropietarioDAOImpl;
-import co.edu.udistrital.dao.impl.RoleDAOImpl;
-import co.edu.udistrital.dao.impl.UserDAOImpl;
-import co.edu.udistrital.dao.impl.VehiculosDAOImpl;
 import co.edu.udistrital.dao.interfaces.IngresosDAO;
 import co.edu.udistrital.dao.interfaces.ParqueaderoDAO;
 import co.edu.udistrital.dao.interfaces.PropietarioDAO;

@@ -47,7 +47,6 @@
 	  <div class="form-group elementoFormPropietario">
 	    <label class="control-label col-sm-2" for="foto"><spring:message code="modificarPropietario.labels.foto"/></label>
 	    <div class="col-sm-3">
-			<!-- input type="file" class="filestyle" data-input="false" id="foto" name="foto" value="${propietario.foto}"-->
 			<div class="fileinput fileinput-new" data-provides="fileinput">
 			  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
 			    <img src="../resources/images/img190x140.png" alt="">
@@ -55,10 +54,11 @@
 			  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 			  <div>
 			    <span class="btn btn-default btn-file">
-			    <span class="fileinput-new"><spring:message code="modificarUsuario.buttons.submit.seleccionarImg"/></span>
-			    <span class="fileinput-exists"><spring:message code="modificarUsuario.buttons.submit.cambiarImg"/></span><input type="file" name="..."></span>
+			    <span class="fileinput-new"><spring:message code="modificarPropietario.buttons.submit.seleccionarImg"/></span>
+			    <span class="fileinput-exists"><spring:message code="modificarPropietario.buttons.submit.cambiarImg"/></span>
+			    	<input type="file" id="foto" name="foto"></span>
 			    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">
-			    	<spring:message code="modificarUsuario.buttons.submit.eliminarImg"/></a>
+			    	<spring:message code="modificarPropietario.buttons.submit.eliminarImg"/></a>
 			  </div>
 			</div>
 	    </div>
@@ -107,7 +107,7 @@
 	    <button type="submit" class="btn btn-success"><c:out value="${buttonName}"/></button>
 	    </div>
 	    <div class="col-sm-offset-2 col-sm-2">
-	    <a class="btn btn-default" href="javascript:history.back()"><spring:message code="modificarUsuario.buttons.submit.volver"/></a>
+	    <a class="btn btn-default" href="<c:url value="/welcome" />"><spring:message code="modificarPropietario.buttons.submit.cancelar"/></a>
 	    </div>
 	  </div>
 	</form>
