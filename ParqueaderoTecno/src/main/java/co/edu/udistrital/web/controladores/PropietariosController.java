@@ -20,8 +20,6 @@ public class PropietariosController extends CommonController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PropietariosController.class);
 	
-	 
-	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		logger.info("Devolviendo la vista de listar propietarios");
@@ -54,13 +52,18 @@ public class PropietariosController extends CommonController {
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(PropietarioDTO propietario, Model model) {
 		logger.info("Entrando a modificar propietario en modo "+(propietario.getEsCrear()?"Creación":"Modificación"));
-		if(propietario.getEsCrear()){
-			crearPropietario(propietario);
-			model.addAttribute("exito","Se ha creado el propietario exitosamente");
-		}
-		else{
-			modificarPropietario(propietario);
-			model.addAttribute("exito","Se ha editado el propietario exitosamente");
+		Propietario resultPropietario = propietarioServiceImpl.buscarPropietarioPorCedula(propietario.getCedula());
+		if(resultPropietario.getCedula() == propietario.getCedula()){	
+			model.addAttribute("error","Actualmente ya existe un propietario con ese número de cédula, por favor inténtelo de nuevo...");
+		} else {
+			if(propietario.getEsCrear()){
+				crearPropietario(propietario);
+				model.addAttribute("exito","Se ha creado el propietario exitosamente");
+			}
+			else{
+				modificarPropietario(propietario);
+				model.addAttribute("exito","Se ha editado el propietario exitosamente");
+			}
 		}
 		return listar(model);
 	}

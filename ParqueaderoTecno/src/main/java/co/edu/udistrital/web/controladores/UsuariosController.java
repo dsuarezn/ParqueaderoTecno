@@ -54,14 +54,19 @@ public class UsuariosController extends CommonController{
 	
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(UserWebDTO usuario, Model model) {
-		logger.info("Entrando a modificar usuario en modo "+(usuario.getEsCrear()?"Creaciï¿½n":"Modificaciï¿½n"));
-		if(usuario.getEsCrear()){
-			crearUser(usuario);
-			model.addAttribute("exito","Se ha creado el usuario exitosamente");
-		}
-		else{
-			modificarUser(usuario);
-			model.addAttribute("exito","Se ha editado el usuario exitosamente");
+		logger.info("Entrando a modificar usuario en modo "+(usuario.getEsCrear()?"Creación":"Modificación"));
+		User resultUser=customUserDetailsServiceImpl.buscarUsuarioPorNombre(usuario.getUsername());
+		if(resultUser.getUsername().equalsIgnoreCase(usuario.getUsername())){	
+			model.addAttribute("error","Actualmente ya existe una persona con ese nombre de usuario, por favor inténtelo de nuevo...");
+		} else {
+			if(usuario.getEsCrear()){
+				crearUser(usuario);
+				model.addAttribute("exito","Se ha creado el usuario exitosamente");
+			}
+			else{
+				modificarUser(usuario);
+				model.addAttribute("exito","Se ha editado el usuario exitosamente");
+			}
 		}
 		return listar(model);
 	}
