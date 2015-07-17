@@ -3,8 +3,17 @@
 
 <spring:url value="/usuarios/crear" var="usuarios_crear" />
 <spring:url value="/usuarios/listar" var="usuarios_listar"/>
+
 <spring:url value="/propietarios/crear"  var="propietarios_crear"/>
 <spring:url value="/propietarios/listar"  var="propietarios_listar"/>
+
+
+<spring:url value="/registro/crear"  var="registro_crear"/>
+<spring:url value="/registro/listar"  var="registro_listar"/>
+
+<spring:url value="/parqueaderos/crear"  var="parqueaderos_crear"/>
+<spring:url value="/parqueaderos/listar"  var="parqueaderos_listar"/>
+
 <spring:url value="/vehiculos/crear"  var="vehiculos_crear"/>
 <spring:url value="/vehiculos/listar"  var="vehiculos_listar"/>
 
@@ -22,13 +31,12 @@
         	<a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.propietarios"/></a>
             <div class="collapse" id="demo4">
 	            <a href="${propietarios_crear}" class="list-group-item"><spring:message code="menu.labels.propietarios.crear"/></a>
-	            <a href="${propietarios_listar}" class="list-group-item"><spring:message code="menu.labels.propietarios.consulta"/></a>
-	            <a href="" class="list-group-item"><spring:message code="menu.labels.propietarios.carne"/></a>            
+	            <a href="${propietarios_listar}" class="list-group-item"><spring:message code="menu.labels.propietarios.consulta"/></a>      
          	</div>  
         	<a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.parqueaderos"/></a>
           	<div class="collapse" id="demo5">
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.parqueaderos.crear"/></a>
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.parqueaderos.consulta"/></a>            
+            	<a href="${parqueaderos_crear}"  class="list-group-item"><spring:message code="menu.labels.parqueaderos.crear"/></a>
+            	<a href="${parqueaderos_listar}" class="list-group-item"><spring:message code="menu.labels.parqueaderos.consulta"/></a>            
           	</div>
           	<a href="#demo6" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.vehiculos"/></a>
             <div class="collapse" id="demo6">
@@ -39,8 +47,8 @@
         <sec:authorize access="hasAnyRole('ROLE_GUARDIA','ROLE_SUSER')">
         	<a href="#demo7" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"><spring:message code="menu.labels.registro"/></a>
             <div class="collapse" id="demo7">
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.registro.ingreso"/></a>
-            	<a href="" class="list-group-item"><spring:message code="menu.labels.registro.salida"/></a>            
+            	<a href="${registro_crear}" class="list-group-item"><spring:message code="menu.labels.registro.ingreso"/></a>
+            	<a href="${registro_listar}" class="list-group-item"><spring:message code="menu.labels.registro.listar"/></a>            
          	</div>  	
         </sec:authorize>    	            	         	
         </div>

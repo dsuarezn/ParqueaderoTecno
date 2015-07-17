@@ -45,8 +45,4 @@ public class GenericDAOJPAImpl<T, PK extends Serializable>
 		persistentObject = this.em.merge(persistentObject);
 		this.em.remove(persistentObject);
 	}
-
-
-
-
 }

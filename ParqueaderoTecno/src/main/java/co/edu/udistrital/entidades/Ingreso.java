@@ -1,7 +1,9 @@
 package co.edu.udistrital.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -11,7 +13,15 @@ import java.util.Date;
  */
 @Entity
 @Table(name="ingresos")
-@NamedQuery(name="Ingreso.findAll", query="SELECT i FROM Ingreso i")
+@NamedQueries({
+	@NamedQuery(name="Ingreso.findAll", query="SELECT i FROM Ingreso i"),
+	@NamedQuery(name="Ingreso.findActivoById", query="SELECT i FROM Ingreso i WHERE i.estado = true and i.vehiculo.placa = :placa"),
+	@NamedQuery(name="Ingreso.findIngresoByBasicFilters", query="SELECT i FROM Ingreso i "
+				+ "WHERE (i.estado = :estado or :estado is NULL) "
+				+ "and (i.vehiculo.placa = :placa or :placa is NULL) "
+				+ "and (i.fechaEntrada = :fechaIngreso or :fechaIngreso is NULL) "
+				+ "and (i.fechaSalida = :fechaFin or :fechaFin is NULL) ")	
+})
 public class Ingreso implements Serializable {
 	private static final long serialVersionUID = 1L;
 

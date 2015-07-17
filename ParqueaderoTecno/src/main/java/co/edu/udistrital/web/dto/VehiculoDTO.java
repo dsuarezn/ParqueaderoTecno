@@ -11,9 +11,40 @@ public class VehiculoDTO {
 	
 	private Long cedula;
 	
+	private String nombre;
+	
+	private String apellido;
+	
+	private String nombreCompletoPropietario;
+
+	public String getNombreCompletoPropietario() {
+		return nombreCompletoPropietario;
+	}
+
+	public void setNombreCompletoPropietario(String nombreCompletoPropietario) {
+		this.nombreCompletoPropietario = nombreCompletoPropietario;
+	}
+
 	private String tipovehiculo;
 		
 	private boolean esCrear;
+	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
 	public String getPlaca() {
 		return placa;
@@ -66,7 +97,7 @@ public class VehiculoDTO {
 	@Override
 	public String toString() {
 		return "VehiculoDTO [placa=" + placa + ", marca=" + marca
-				+ ", linea=" + linea + ", cedula=" + cedula + tipovehiculo
+				+ ", linea=" + linea + ", cedula=" + cedula +" Tipo= " + tipovehiculo
 				+ ", esCrear=" + esCrear + "]";
 	}
 

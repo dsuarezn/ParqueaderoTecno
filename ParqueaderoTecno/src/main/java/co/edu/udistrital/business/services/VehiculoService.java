@@ -11,7 +11,9 @@ public interface VehiculoService {
 	
 	public List<Vehiculo> findAllVehiculos() throws PersistenceException;
 
-	public List<Vehiculo> obtenerVehiculosPorIdentificacion(Long identificacion);
+	public List<Vehiculo> obtenerVehiculosPorIdentificacion(Long identificacion)throws PersistenceException;
+	
+	public Vehiculo obtenerVehiculosPorPlaca(String placa)throws PersistenceException;
 	
 	public Vehiculo crearVehiculo(Vehiculo vehiculo) throws PersistenceException;
 	

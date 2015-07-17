@@ -12,7 +12,6 @@ import co.edu.udistrital.dao.GenericDAOJPAImpl;
 import co.edu.udistrital.dao.interfaces.PropietarioDAO;
 import co.edu.udistrital.dao.interfaces.VehiculosDAO;
 import co.edu.udistrital.entidades.Propietario;
-import co.edu.udistrital.entidades.User;
 import co.edu.udistrital.entidades.Vehiculo;
 
 @Repository
@@ -36,5 +35,13 @@ public class VehiculosDAOImpl extends GenericDAOJPAImpl<Vehiculo, String> implem
 		return listavehiculos;
 	}
 	
-	
+
+	@Override
+	public Vehiculo findVehiculoByPLaca(String placa) throws PersistenceException {
+		Query query = em.createNamedQuery("Vehiculo.findByPlaca");
+		query.setParameter("placa", placa);
+		Vehiculo vehiculo = (Vehiculo) query.getSingleResult();
+		return vehiculo;
+	}
+
 }

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.udistrital.business.services.VehiculoService;
 import co.edu.udistrital.dao.DAOFactory;
+import co.edu.udistrital.entidades.Propietario;
 import co.edu.udistrital.entidades.Vehiculo;
 
 @Transactional
@@ -26,14 +27,9 @@ import co.edu.udistrital.entidades.Vehiculo;
 @Qualifier("vehiculoServiceImpl")
 public class VehiculoServiceImpl extends ServiceCommons implements VehiculoService {
 	
-	@Autowired
-	private DAOFactory daoFactory;
-	
-	@Autowired
-	private MessageSource messageSource;
 
 	@Override
-	public List<Vehiculo> obtenerVehiculosPorIdentificacion(Long identificacion) {
+	public List<Vehiculo> obtenerVehiculosPorIdentificacion(Long identificacion) throws PersistenceException {
 		return daoFactory.getVehiculosDAOImpl().obtenerVehiculosPorIdentificacion(identificacion);
 	}
 
@@ -61,5 +57,10 @@ public class VehiculoServiceImpl extends ServiceCommons implements VehiculoServi
 	public void borrarVehiculo(co.edu.udistrital.entidades.Vehiculo vehiculo) throws PersistenceException {
 		daoFactory.getVehiculosDAOImpl().delete(vehiculo);
 
+	}
+	
+	@Override
+	public Vehiculo obtenerVehiculosPorPlaca(String placa) throws PersistenceException{
+		return daoFactory.getVehiculosDAOImpl().findVehiculoByPLaca(placa);
 	}
 }

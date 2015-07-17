@@ -5,9 +5,8 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 
-import co.edu.udistrital.business.services.CustomUserDetailsService;
-import co.edu.udistrital.business.services.RoleService;
-import co.edu.udistrital.business.services.VehiculoService;
+import co.edu.udistrital.business.services.*;
+
 
 public class CommonController {
 
@@ -19,6 +18,12 @@ public class CommonController {
 	
 	@Autowired
 	protected VehiculoService vehiculoServiceImpl;
+	
+	@Autowired
+	protected PropietarioService propietarioServiceImpl;
+	
+	@Autowired
+	protected IngresoService ingresoServicioImpl;
 	
 	protected Locale locale;	
 	public CommonController() {

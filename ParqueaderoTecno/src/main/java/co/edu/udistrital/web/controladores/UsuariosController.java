@@ -62,7 +62,7 @@ public class UsuariosController extends CommonController{
 	
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(UserWebDTO usuario, Model model) {
-		logger.info("Entrando a modificar usuario en modo "+(usuario.getEsCrear()?"Creación":"Modificación"));
+		logger.info("Entrando a modificar usuario en modo "+(usuario.getEsCrear()?"Creaciï¿½n":"Modificaciï¿½n"));
 		if(usuario.getEsCrear()){
 			crearUser(usuario);
 			model.addAttribute("exito","Se ha creado el usuario exitosamente");
@@ -106,7 +106,5 @@ public class UsuariosController extends CommonController{
 	private User modificarUser(UserWebDTO usuario){
 		return customUserDetailsServiceImpl.actualizarUsuario(new User(usuario.getUsername(),usuario.getEnable(),usuario.getPassword(),new Role(usuario.getRolename())));
 	}
-	
-
 	
 }

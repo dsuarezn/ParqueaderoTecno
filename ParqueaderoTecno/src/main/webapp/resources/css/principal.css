@@ -44,7 +44,7 @@
         left:0;
         text-align:center;
         width:100%;
-        height:20px;
+        height:15px;
     }
     
      .mensajes{    	  
@@ -108,7 +108,12 @@
 .elementoFormPropietario{
 	height:40px;	
 }
-
+.elementoFormParqueadero{
+	height:40px;	
+}
+.elementoFormVehiculo{
+	height:40px;	
+}
 
 /* Fin se sobreescribe clear para bootstrap form-groups */
 
@@ -131,4 +136,18 @@
 	color: #FF0000
 }
 
+.glyphicon-credit-card{
+	color: #0000FF;
+}
+
 /* Fin colores para los iconos de bootstrap */
+
+
+/* Inicio estilos para tabla*/
+.table, th {
+	text-align: center !important;
+}
+/* Fin estilos tabla*/
+
+
+}
