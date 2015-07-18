@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import co.edu.udistrital.dao.GenericDAOJPAImpl;
 import co.edu.udistrital.dao.interfaces.RoleDAO;
 import co.edu.udistrital.entidades.Role;
-import co.edu.udistrital.entidades.User;
 
 @Repository
 @Qualifier("roleDAOImpl")

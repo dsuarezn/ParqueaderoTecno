@@ -25,6 +25,7 @@
  		<sec:intercept-url pattern="/login**" access="permitAll" /> 		
  		<sec:intercept-url pattern="/**" access="isAuthenticated()" />
  		<sec:intercept-url pattern="/welcome*" access="isAuthenticated()" />
+ 		<sec:intercept-url pattern="/about*" access="isAuthenticated()" />
  		
  		
  		

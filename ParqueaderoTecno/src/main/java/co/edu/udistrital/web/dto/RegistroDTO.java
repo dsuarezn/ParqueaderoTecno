@@ -1,6 +1,5 @@
 package co.edu.udistrital.web.dto;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 

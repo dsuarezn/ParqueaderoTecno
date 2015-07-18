@@ -3,7 +3,6 @@ package co.edu.udistrital.dao.interfaces;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
-import javax.persistence.Query;
 
 import co.edu.udistrital.dao.GenericDAOInterface;
 import co.edu.udistrital.entidades.Ingreso;

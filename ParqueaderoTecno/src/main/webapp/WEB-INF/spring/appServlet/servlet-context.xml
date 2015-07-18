@@ -46,7 +46,8 @@
 
 
 	<view-controller path="/login"/>   
-	<view-controller path="/welcome"/>   
+	<view-controller path="/welcome"/>
+	<view-controller path="/about"/>   
 	<view-controller path="/uncaughtException"/>
 	<view-controller path="/resourceNotFound"/>
 	<view-controller path="/dataAccessFailure"/>
