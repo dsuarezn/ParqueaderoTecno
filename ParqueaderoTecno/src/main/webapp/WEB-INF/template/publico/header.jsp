@@ -8,7 +8,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-           <a class="navbar-brand" href="#"><spring:message code="global.app.name"/></a>
+           <a class="navbar-brand" href="<c:url value="/login" />"><spring:message code="global.app.name"/></a>
         </div>
       </div>
     </nav>

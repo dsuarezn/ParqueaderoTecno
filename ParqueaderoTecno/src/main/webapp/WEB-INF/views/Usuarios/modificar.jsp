@@ -38,13 +38,13 @@
 	  </div>
 	  <div class="form-group elementoFormUsuario">
 	    <label class="control-label col-sm-2" for="password"><spring:message code="modificarUsuario.labels.contrasena"/></label>
-	    <div class="col-sm-3"> 
+	    <div class="col-sm-3">
 	      <input type="password" autocomplete="off" class="form-control" id="password" name="password" placeholder="<spring:message code="modificarUsuario.labels.placeholder.contrasena"/>" ${user.esCrear == true ? 'required autofocus' : ' '}>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormUsuario">
 	    <label class="control-label col-sm-2" for="rolename"><spring:message code="modificarUsuario.labels.rol"/></label>
-	    <div class="col-sm-3"> 	      	
+	    <div class="col-sm-3">
 			<select id="rolename" name="rolename" class="form-control" ${user.username eq pageContext.request.userPrincipal.name ? 'disabled' : ' '}>
 				<c:forEach var="role" items="${roleslist}">
 					<option value="${role.nombre}" ${user.rolename eq role.nombre ? 'selected' : ' '}><c:out value="${role.descripcion}"/></option>

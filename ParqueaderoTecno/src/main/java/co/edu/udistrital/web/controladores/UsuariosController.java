@@ -3,6 +3,8 @@ package co.edu.udistrital.web.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -55,18 +57,27 @@ public class UsuariosController extends CommonController{
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(UserWebDTO usuario, Model model) {
 		logger.info("Entrando a modificar usuario en modo "+(usuario.getEsCrear()?"Creación":"Modificación"));
-		User resultUser=customUserDetailsServiceImpl.buscarUsuarioPorNombre(usuario.getUsername());
-		if(resultUser.getUsername().equalsIgnoreCase(usuario.getUsername())){	
-			model.addAttribute("error","Actualmente ya existe una persona con ese nombre de usuario, por favor inténtelo de nuevo...");
-		} else {
-			if(usuario.getEsCrear()){
+		User resultUser=null;
+		try {
+			resultUser = customUserDetailsServiceImpl.buscarUsuarioPorNombre(usuario.getUsername());
+		} catch (PersistenceException e) {
+			logger.info("Usuario existente");
+		}
+		
+		if(usuario.getEsCrear()){
+			if (resultUser != null){
+				model.addAttribute("error","Actualmente ya existe una persona con ese nombre de usuario, por favor inténtelo de nuevo...");
+			} else{
 				crearUser(usuario);
 				model.addAttribute("exito","Se ha creado el usuario exitosamente");
 			}
-			else{
-				modificarUser(usuario);
-				model.addAttribute("exito","Se ha editado el usuario exitosamente");
+		} else{
+			while (usuario.getPassword().equalsIgnoreCase("")){
+				usuario.setPassword(resultUser.getPassword());
+				break;
 			}
+			modificarUser(usuario);
+			model.addAttribute("exito","Se ha editado el usuario exitosamente");			
 		}
 		return listar(model);
 	}

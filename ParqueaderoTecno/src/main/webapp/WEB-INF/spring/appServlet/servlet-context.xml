@@ -78,5 +78,7 @@
 		<beans:property name="basename" value="resources/i18n/mensajes" />
 		<beans:property name="fallbackToSystemLocale" value="false"/>		
 	</beans:bean>
+	
+	<beans:bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 </beans:beans>

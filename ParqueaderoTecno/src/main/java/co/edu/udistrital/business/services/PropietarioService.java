@@ -3,6 +3,7 @@ package co.edu.udistrital.business.services;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
+import javax.servlet.http.HttpServletRequest;
 
 import co.edu.udistrital.entidades.Propietario;
 

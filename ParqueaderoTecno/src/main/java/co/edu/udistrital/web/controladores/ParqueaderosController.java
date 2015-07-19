@@ -3,6 +3,8 @@ package co.edu.udistrital.web.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,20 +56,24 @@ public class ParqueaderosController {
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(ParqueaderoDTO parqueadero, Model model) {
 		logger.info("Entrando a modificar parqueadero en modo "+(parqueadero.getEsCrear()?"Creación":"Modificación"));
-		Parqueadero resultParqueadero  = customParqueaderoDetailsServiceImpl.loadParqueaderoByTipo(parqueadero.getTipoParqueadero());
-		if(resultParqueadero.getTipoParqueadero().equalsIgnoreCase(parqueadero.getTipoParqueadero())){	
-			model.addAttribute("error","Actualmente ya existe un tipo de parqueadero con ese nombre, por favor inténtelo de nuevo...");
-		} else {
-			if(parqueadero.getEsCrear()){
+		Parqueadero resultParqueadero  = null;
+		try {
+			resultParqueadero  = customParqueaderoDetailsServiceImpl.loadParqueaderoByTipo(parqueadero.getTipoParqueadero());
+		} catch (PersistenceException e) {
+			logger.info("Parqueadero existente");
+		}
+		
+		if(parqueadero.getEsCrear()){
+			if (resultParqueadero != null){
+				model.addAttribute("error","Actualmente ya existe un tipo de parqueadero con ese nombre, por favor inténtelo de nuevo...");
+			} else {
 				crearParqueadero(parqueadero);
 				model.addAttribute("exito","Se ha creado el tipo de parqueadero exitosamente");
 			}
-			else{
-				modificarParqueadero(parqueadero);
-				model.addAttribute("exito","Se ha editado el tipo de parqueadero exitosamente");
-			}
+		} else{
+			modificarParqueadero(parqueadero);
+			model.addAttribute("exito","Se ha editado el tipo de parqueadero exitosamente");
 		}
-
 		return listar(model);
 	}
 

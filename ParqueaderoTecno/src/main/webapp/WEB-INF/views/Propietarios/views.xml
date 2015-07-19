@@ -9,5 +9,5 @@
 	<definition extends="autenticado" name="listarPropietarios">
 		<put-attribute name="body" value="/WEB-INF/views/Propietarios/listar.jsp"/>
 	</definition>
-	
+		
 </tiles-definitions>

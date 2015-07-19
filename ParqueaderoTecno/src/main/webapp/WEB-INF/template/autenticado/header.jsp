@@ -8,7 +8,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-           <a class="navbar-brand" href="#"><spring:message code="global.app.name"/></a>
+           <a class="navbar-brand" href="<c:url value="/welcome" />"><spring:message code="global.app.name"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">         
         <ul class="nav navbar-nav navbar-right">

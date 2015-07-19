@@ -1,10 +1,21 @@
 package co.edu.udistrital.business.services.impl;
 
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +37,7 @@ public class PropietarioServiceImpl extends ServiceCommons implements Propietari
 
 	@Override
 	public co.edu.udistrital.entidades.Propietario crearPropietario(co.edu.udistrital.entidades.Propietario propietario) throws PersistenceException {
-		return daoFactory.getPropietarioDAOImpl().create(propietario);		
+		    return daoFactory.getPropietarioDAOImpl().create(propietario);		
 	}
 
 	@Override

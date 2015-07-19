@@ -27,8 +27,7 @@
 </c:if>
 <div class="body">
     <h1><c:out value="${viewTittle}"/></h1>    
-	<form class="form-horizontal" role="form" action="${modificarUrl}" method="POST">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	<form class="form-horizontal" role="form" action="${modificarUrl}?${_csrf.parameterName}=${_csrf.token}" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="esCrear" value="${propietario.esCrear}" />
 	  <div class="form-group elementoFormPropietario">
 	    <label class="control-label col-sm-2" for="tipoPropietario"><spring:message code="modificarPropietario.labels.tipoPropietario"/></label>
@@ -43,22 +42,20 @@
 			</select>	      
 	    </div>
 	  </div>
-	  
+		   
 	  <div class="form-group elementoFormPropietario">
 	    <label class="control-label col-sm-2" for="foto"><spring:message code="modificarPropietario.labels.foto"/></label>
 	    <div class="col-sm-3">
 			<div class="fileinput fileinput-new" data-provides="fileinput">
 			  <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-			    <img src="../resources/images/img190x140.png" alt="">
+					<img src="${pageContext.request.contextPath}/resources/photos/${propietario.foto != null ? propietario.foto : 'img190x140.png'}" alt="" />
 			  </div>
 			  <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 			  <div>
 			    <span class="btn btn-default btn-file">
 			    <span class="fileinput-new"><spring:message code="modificarPropietario.buttons.submit.seleccionarImg"/></span>
 			    <span class="fileinput-exists"><spring:message code="modificarPropietario.buttons.submit.cambiarImg"/></span>
-			    	<input type="file" id="foto" name="foto"></span>
-			    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">
-			    	<spring:message code="modificarPropietario.buttons.submit.eliminarImg"/></a>
+			    	<input type="file" name="file" value="${propietario.foto}"></span>
 			  </div>
 			</div>
 	    </div>
