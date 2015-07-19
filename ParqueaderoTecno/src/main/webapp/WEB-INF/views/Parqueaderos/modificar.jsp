@@ -42,8 +42,7 @@
 			<label class="control-label col-sm-2" for="espacios"><spring:message
 					code="modificarParqueadero.labels.espacios" /></label>
 			<div class="col-sm-3">
-				<input type="text" class="form-control" id="espacios"
-					name="espacios" value="${parqueadero.espacios !=0 ? parqueadero.espacios : '' }"
+				<input type="number" min=1 class="form-control" id="espacios" name="espacios" value="${parqueadero.espacios !=0 ? parqueadero.espacios : '' }"
 					placeholder="<spring:message code="modificarParqueadero.labels.placeholder.espacios"/>" required autofocus>
 			</div>
 		</div>
@@ -57,12 +56,12 @@
 			</div>
 		</div>
 		<div class="form-group elementoFormParqueadero">
-			<div class="col-sm-offset-2 col-sm-2">
+			<div class="col-sm-offset-1 col-sm-2">
 				<button type="submit" class="btn btn-success">
 					<c:out value="${buttonName}" />
 				</button>
 			</div>
-			<div class="col-sm-offset-2 col-sm-2">
+			<div class="col-sm-offset-1 col-sm-2">
 	    		<a class="btn btn-default" href="<c:url value="/welcome" />"><spring:message code="modificarParqueadero.buttons.submit.cancelar"/></a>
 	    	</div>
 		</div>

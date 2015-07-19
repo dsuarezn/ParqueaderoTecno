@@ -3,6 +3,8 @@ package co.edu.udistrital.web.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,14 +61,24 @@ public class VehiculosController extends CommonController {
 	
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(VehiculoDTO vehiculo, Model model) {
+		logger.info("Devolviendo la vista en modificar");
+		Vehiculo resultVehiculo=null;
+		try {
+			resultVehiculo = VehiculoServiceImpl.obtenerVehiculosPorPlaca(vehiculo.getPlaca());
+		} catch (PersistenceException e) {
+			logger.info("Usuario existente");
+		}
 		
 		if(vehiculo.getEsCrear()){
-			logger.info("Devolviendo la vista en modificar");
-			crearVehiculo(vehiculo);
-			model.addAttribute("exito","Se ha creado el vehiculo exitosamente");
-		}else{
+			if (resultVehiculo != null){
+				model.addAttribute("error","Actualmente ya existe un vehículo con esa placa, por favor inténtelo de nuevo...");
+			} else{
+				crearVehiculo(vehiculo);
+				model.addAttribute("exito","Se ha creado el vehículo exitosamente");
+			}			
+		} else{
 			modificarVehiculo(vehiculo);
-			model.addAttribute("exito","Se ha editado el vehiculo exitosamente");
+			model.addAttribute("exito","Se ha editado el vehículo exitosamente");
 		}
 		return listar(model);
 	}

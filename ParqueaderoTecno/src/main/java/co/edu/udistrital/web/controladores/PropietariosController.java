@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
@@ -59,8 +57,6 @@ public class PropietariosController extends CommonController {
 		return "crearPropietarios";
 	}
 	
-	HttpServletRequest request;
-		
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(PropietarioDTO propietario, Model model,  @RequestParam("file") MultipartFile file) {
 		logger.info("Entrando a modificar propietario en modo "+(propietario.getEsCrear()?"Creación":"Modificación"));

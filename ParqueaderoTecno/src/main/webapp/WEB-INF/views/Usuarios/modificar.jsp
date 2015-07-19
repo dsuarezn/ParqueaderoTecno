@@ -59,10 +59,10 @@
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormUsuario"> 
-	    <div class="col-sm-offset-2 col-sm-2">
+	    <div class="col-sm-offset-1 col-sm-2">
 	       <button type="submit" class="btn btn-success"><c:out value="${buttonName}"/></button>
 	    </div>
-	    <div class="col-sm-offset-2 col-sm-2">
+	    <div class="col-sm-offset-1 col-sm-2">
 	    	<a class="btn btn-default" href="<c:url value="/welcome" />"><spring:message code="modificarUsuario.buttons.submit.cancelar"/></a>
 	    </div>
 	  </div>

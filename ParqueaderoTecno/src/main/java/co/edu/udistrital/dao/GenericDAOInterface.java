@@ -1,11 +1,6 @@
 package co.edu.udistrital.dao;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.PersistenceException;
-
-import co.edu.udistrital.entidades.Vehiculo;
 
 
 public interface GenericDAOInterface <T, PK extends Serializable>{

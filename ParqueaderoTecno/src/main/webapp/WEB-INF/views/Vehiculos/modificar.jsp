@@ -31,41 +31,41 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" name="esCrear" value="${vehiculo.esCrear}" />
 	  <div class="form-group elementoFormVehiculo">
-	    <label class="control-label col-sm-2" for="placa"><spring:message code="modificarVehiculo.labels.placeholder.placa"/></label>
+	    <label class="control-label col-sm-3" for="placa"><spring:message code="modificarVehiculo.labels.placa"/></label>
 	    <div class="col-sm-3">
-	      <input type="text" class="form-control" id="placa" name="placa" placeholder="<spring:message code="modificarVehiculo.labels.placeholder.placa"/>"  value = "${vehiculo.placa}">
+	      <input type="text" class="form-control" id="placa" name="placa" placeholder="<spring:message code="modificarVehiculo.labels.placeholder.placa"/>"  value = "${vehiculo.placa}" ${vehiculo.esCrear != true ? 'readonly' : ' '} required>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormVehiculo">
-	    <label class="control-label col-sm-2" for="marca"><spring:message code="modificarVehiculo.labels.placeholder.marca"/></label>
+	    <label class="control-label col-sm-3" for="marca"><spring:message code="modificarVehiculo.labels.marca"/></label>
 	    <div class="col-sm-3">
-	      <input type="text" class="form-control" id="marca" name="marca" placeholder="<spring:message code="modificarVehiculo.labels.placeholder.marca"/>" value = "${vehiculo.marca}">
+	      <input type="text" class="form-control" id="marca" name="marca" placeholder="<spring:message code="modificarVehiculo.labels.placeholder.marca"/>" value = "${vehiculo.marca}" required>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormVehiculo">
-	    <label class="control-label col-sm-2" for="linea"><spring:message code="modificarVehiculo.labels.placeholder.linea"/></label>
+	    <label class="control-label col-sm-3" for="linea"><spring:message code="modificarVehiculo.labels.linea"/></label>
 	    <div class="col-sm-3">
-	      <input type="text" class="form-control" id="linea" name="linea" placeholder="<spring:message code="modificarVehiculo.labels.placeholder.linea"/>"  value = "${vehiculo.linea}">
+	      <input type="text" class="form-control" id="linea" name="linea" placeholder="<spring:message code="modificarVehiculo.labels.placeholder.linea"/>"  value = "${vehiculo.linea}" required>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormVehiculo">
-	    <label class="control-label col-sm-2" for="cedula"><spring:message code="modificarVehiculo.labels.placeholder.cedula"/></label>
+	    <label class="control-label col-sm-3" for="cedula"><spring:message code="modificarVehiculo.labels.propietario"/></label>
 	    <div class="col-sm-3">
-	      <select id="cedula" name="cedula" class="form-control">
+	      <select id="cedula" name="cedula" class="form-control" required>
 				<c:forEach items="${listaPropietarios}" var="propietario">					
-					<option value="${propietario.cedula}" ${vehiculo.cedula eq propietario.cedula ? 'selected' : ' '}><c:out value="${propietario.cedula} ${propietario.nombre} ${propietario.apellido}"/></option>
+					<option value="${propietario.cedula}" ${vehiculo.cedula eq propietario.cedula ? 'selected' : ' '}><c:out value="${propietario.cedula} - ${propietario.nombre} ${propietario.apellido}"/></option>
 				</c:forEach>	
 			</select>
 	    </div>
 	  </div>
 	  
 	  	  <div class="form-group elementoFormVehiculo">
-	    <label class="control-label col-sm-2" for="tipovehiculo"><spring:message code="modificarVehiculo.labels.tipovehiculo"/></label>
+	    <label class="control-label col-sm-3" for="tipovehiculo"><spring:message code="modificarVehiculo.labels.tipovehiculo"/></label>
 	    <div class="col-sm-3">
 	      <select id="tipovehiculo" name="tipovehiculo" class="form-control" >
-				<option value="<spring:message code="modificarVehiculo.labels.automovil"/>"  ${vehiculo.tipovehiculo eq 'Automovil' ? 'selected' : ' '}>
+				<option value="<spring:message code="modificarVehiculo.labels.automovil"/>" ${vehiculo.tipovehiculo eq 'Automovil' ? 'selected' : ' '}>
 				<spring:message code="modificarVehiculo.labels.automovil"/></option>
-				<option value="<spring:message code="modificarVehiculo.labels.moto"/>"   ${vehiculo.tipovehiculo eq 'Moto' ? 'selected' : ' '}>
+				<option value="<spring:message code="modificarVehiculo.labels.moto"/>" ${vehiculo.tipovehiculo eq 'Moto' ? 'selected' : ' '}>
 				<spring:message code="modificarVehiculo.labels.moto"/></option>		
 			</select>
 	    </div>
@@ -77,7 +77,7 @@
 	    <button type="submit" class="btn btn-success"><c:out value="${buttonName}"/></button>
 	    </div>
 	    <div class="col-sm-offset-2 col-sm-2">
-	    <a class="btn btn-default" href="javascript:history.back()"><spring:message code="modificarVehiculo.buttons.submit.volver"/></a>
+	    <a class="btn btn-default" href="<c:url value="/welcome" />"><spring:message code="modificarVehiculo.buttons.submit.cancelar"/></a>
 	    </div>
 	  </div>
 	</form>

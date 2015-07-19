@@ -64,19 +64,19 @@
 	  <div class="form-group elementoFormPropietario">
 	    <label class="control-label col-sm-2" for="cedula"><spring:message code="modificarPropietario.labels.cedula"/></label>
 	    <div class="col-sm-3">
-	      <input type="text" class="form-control" id="cedula" name="cedula" value="${propietario.cedula !=0 ? propietario.cedula : '' }" placeholder="<spring:message code="modificarPropietario.labels.placeholder.cedula"/>" ${propietario.esCrear != true ? 'readonly' : ' '} required autofocus>
+	      <input type="text" pattern="[0-9]*" class="form-control" id="cedula" name="cedula" value="${propietario.cedula !=0 ? propietario.cedula : '' }" placeholder="<spring:message code="modificarPropietario.labels.placeholder.cedula"/>" ${propietario.esCrear != true ? 'readonly' : ' '} required>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormPropietario">
 	    <label class="control-label col-sm-2" for="nombre"><spring:message code="modificarPropietario.labels.nombre"/></label>
 	    <div class="col-sm-3">
-	      <input type="text" class="form-control" id="nombre" name="nombre" value="${propietario.nombre}" placeholder="<spring:message code="modificarPropietario.labels.placeholder.nombre"/>" required autofocus>
+	      <input type="text" class="form-control" id="nombre" name="nombre" value="${propietario.nombre}" placeholder="<spring:message code="modificarPropietario.labels.placeholder.nombre"/>" required>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormPropietario">
 	    <label class="control-label col-sm-2" for="apellido"><spring:message code="modificarPropietario.labels.apellido"/></label>
 	    <div class="col-sm-3">
-	      <input type="text" class="form-control" id="apellido" name="apellido" value="${propietario.apellido}" placeholder="<spring:message code="modificarPropietario.labels.placeholder.apellido"/>" required autofocus>
+	      <input type="text" class="form-control" id="apellido" name="apellido" value="${propietario.apellido}" placeholder="<spring:message code="modificarPropietario.labels.placeholder.apellido"/>" required>
 	    </div>
 	  </div>
 	  <div class="form-group elementoFormPropietario">
