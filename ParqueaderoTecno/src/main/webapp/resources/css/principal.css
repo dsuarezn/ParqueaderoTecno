@@ -111,6 +111,9 @@
 .elementoFormParqueadero{
 	height:40px;	
 }
+.elementoFormVehiculo{
+	height:40px;	
+}
 
 /* Fin se sobreescribe clear para bootstrap form-groups */
 
