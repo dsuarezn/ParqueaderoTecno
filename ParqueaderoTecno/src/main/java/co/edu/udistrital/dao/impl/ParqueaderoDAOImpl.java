@@ -24,8 +24,7 @@ public class ParqueaderoDAOImpl extends GenericDAOJPAImpl<Parqueadero, String> i
 	}
 
 	@Override
-	public Parqueadero findParqueaderosByTipo(String tipoParqueadero)
-			throws PersistenceException {
+	public Parqueadero findParqueaderosByTipo(String tipoParqueadero) throws PersistenceException {
 		Query query = em.createNamedQuery("Parqueadero.findByTipo");
 		query.setParameter("tipo", tipoParqueadero);
 		Parqueadero parqueadero = (Parqueadero) query.getSingleResult();

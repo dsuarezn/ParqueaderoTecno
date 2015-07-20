@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title><spring:message code="login.view.tittle"/></title>
-    	<link href="<c:url value="/resources/css/signin.css" />" rel="stylesheet">
+		<link href="<c:url value="/resources/css/signin.css" />" rel="stylesheet">
     	
     	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
     	<script src="<c:url value="/resources/js/jquery-1.11.3.min.js" />"></script>
@@ -14,12 +13,12 @@
 <body>
 <div class="container">
 	
-	<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-			<div class="alert alert-danger fade in">
-		        <a href="#" class="close" data-dismiss="alert">&times;</a>
-		        <strong>Error!</strong> <spring:message code="login.labels.error"/>
-		    </div>
+	<c:if test="${param.error != null}">
+		<div class="error">${error}</div>
+		<div class="alert alert-danger fade in">
+	        <a href="#" class="close" data-dismiss="alert">&times;</a>
+	        <strong><spring:message code="login.labels.errorAutenticacion"/></strong> <spring:message code="login.labels.error"/>
+	    </div>
  	</c:if>
 	
 	<center><img alt="logoUD" src="<c:url value="/resources/images/logoUD.png"  />"></center>

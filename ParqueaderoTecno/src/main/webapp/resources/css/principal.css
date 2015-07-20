@@ -51,12 +51,6 @@
     	  
     }
     
-/* Inicio estilos para la division de la plantilla */ 
-
-
-
-
-
 
 /* Inicio estilos para el menu */
 .list-group.panel > .list-group-item {
@@ -69,20 +63,11 @@
 /* Fin estilos para el menu */
 
 
-
-
-
-
-
 /* Inicio estilos informacion header */
 .headerLoggedUserCapitalize{
 	text-transform: capitalize;
 }
 /* Fin estilos informacion header */
-
-
-
-
 
 
 /* Inicio estilos informacion footer */
@@ -99,9 +84,7 @@
 /* Inicio estilos informacion footer */
 
 
-
 /* Inicio se sobreescribe clear para bootstrap form-groups */
-
 .elementoFormUsuario{
 	height:40px;	
 }
@@ -114,12 +97,10 @@
 .elementoFormVehiculo{
 	height:40px;	
 }
-
 /* Fin se sobreescribe clear para bootstrap form-groups */
 
 
 /* Inicio colores para los iconos de bootstrap */
-
 .glyphicon-minus{
 	color: #669999;	
 }
@@ -139,7 +120,6 @@
 .glyphicon-credit-card{
 	color: #0000FF;
 }
-
 /* Fin colores para los iconos de bootstrap */
 
 
@@ -149,9 +129,24 @@
 }
 /* Fin estilos tabla*/
 
+
+/* Inicio estilos para carrousel*/
 .carouselUD {
 	width: 800px;
 	margin-top: 30px;
 }
+/* Fin estilos para carrousel*/
 
+
+/* Inicio estilos para página de error*/
+.error-template h1 {
+	font-size: 100px;
+}
+
+.error-template h1,
+.error-template h2,
+.notFound{
+	text-align: center;
+}
+/* Fin estilos para página de error*/
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name="parqueadero")
 @NamedQueries({
 	@NamedQuery(name="Parqueadero.findAll", query="SELECT p FROM Parqueadero p"),
-	@NamedQuery(name="Parqueadero.findByTipo", query="SELECT u FROM Parqueadero u WHERE u.tipoParqueadero = :tipo and u.estado=true")
+	@NamedQuery(name="Parqueadero.findByTipo", query="SELECT u FROM Parqueadero u WHERE u.tipoParqueadero = :tipo")
 })
 public class Parqueadero implements Serializable {
 	private static final long serialVersionUID = 1L;

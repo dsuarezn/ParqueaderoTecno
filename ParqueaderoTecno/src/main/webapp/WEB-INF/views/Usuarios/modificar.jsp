@@ -25,6 +25,7 @@
 	    </c:when>
 	</c:choose>
 </c:if>
+
 <div class="body">
     <h1><c:out value="${viewTittle}"/></h1>    
 	<form class="form-horizontal" role="form" action="${modificarUrl}" method="POST">

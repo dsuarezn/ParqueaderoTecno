@@ -63,6 +63,11 @@ public class ParqueaderosController {
 			logger.info("Parqueadero existente");
 		}
 		
+		while(parqueadero.getEstado()==null){
+			parqueadero.setEstado(false);
+			break;
+		}
+		
 		if(parqueadero.getEsCrear()){
 			if (resultParqueadero != null){
 				model.addAttribute("error","Actualmente ya existe un tipo de parqueadero con ese nombre, por favor inténtelo de nuevo...");
