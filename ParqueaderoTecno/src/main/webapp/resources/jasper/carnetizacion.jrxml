@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="283" pageHeight="170" orientation="Landscape" columnWidth="267" leftMargin="8" rightMargin="8" topMargin="8" bottomMargin="8" uuid="d765e9ae-76cd-4731-aa77-a0707485e8b1">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     propietario.`cedula` AS propietario_cedula,
+     propietario.`nombre` AS propietario_nombre,
+     propietario.`apellido` AS propietario_apellido,
+     propietario.`telFijo` AS propietario_telFijo,
+     propietario.`telMovil` AS propietario_telMovil,
+     propietario.`Foto` AS propietario_Foto,
+     propietario.`tipoPropietario` AS propietario_tipoPropietario
+FROM
+     `propietario` propietario]]>
+	</queryString>
+	<field name="propietario_cedula" class="java.math.BigDecimal"/>
+	<field name="propietario_nombre" class="java.lang.String"/>
+	<field name="propietario_apellido" class="java.lang.String"/>
+	<field name="propietario_telFijo" class="java.lang.String"/>
+	<field name="propietario_telMovil" class="java.lang.String"/>
+	<field name="propietario_Foto" class="java.lang.String"/>
+	<field name="propietario_tipoPropietario" class="java.lang.String"/>
+	<group name="propietario_cedula">
+		<groupExpression><![CDATA[$F{propietario_cedula}]]></groupExpression>
+	</group>
+	<group name="propietario_nombre">
+		<groupExpression><![CDATA[$F{propietario_nombre}]]></groupExpression>
+	</group>
+	<group name="propietario_telMovil">
+		<groupExpression><![CDATA[$F{propietario_telMovil}]]></groupExpression>
+	</group>
+	<group name="propietario_Foto">
+		<groupExpression><![CDATA[$F{propietario_Foto}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="153" splitType="Stretch">
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="6" y="1" width="33" height="40" uuid="5ba34874-31e1-4f43-9098-522f54cdae0b"/>
+				<imageExpression><![CDATA["/Users/Adriana/Downloads/UD/Arregladas/Escudo_Bogota.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="47" y="0" width="170" height="15" uuid="bd508ee1-47e2-498c-8023-7a79ace4adff"/>
+				<textElement textAlignment="Center">
+					<font fontName="Impact" size="12"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD DISTRITAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="14" width="170" height="15" uuid="bd11f237-8b0b-4c0e-9b96-b13d7c19b5b1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Impact" size="12"/>
+				</textElement>
+				<text><![CDATA[FRANCISCO JOSE DE CALDAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="68" y="30" width="128" height="9" backcolor="#CC0000" uuid="fdb64d31-34eb-4a20-b9c7-e796d8f0a2ba"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[ALCALDIA MAYOR DE BOGOTÁ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="226" y="-2" width="35" height="44" uuid="a6728266-bfed-4dab-b559-545b5fdead57"/>
+				<imageExpression><![CDATA["/Users/Adriana/Downloads/UD/Arregladas/Escudo_UD.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="8" y="51" width="162" height="14" uuid="ec74ad82-fe01-4654-8e22-60a9d3912397"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parqueadero Sede Tecnológica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="74" width="50" height="10" uuid="a3c9934e-5772-43e9-963f-a73a16a9b82a"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Identificación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="65" y="74" width="122" height="10" uuid="14cef439-9b3d-416d-98e6-5ca1e3d6da68"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{propietario_cedula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="86" width="50" height="10" uuid="b3e81c66-49d3-4006-bf2f-aed7b915d7a2"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="65" y="86" width="122" height="10" uuid="2955615b-42f0-4ed6-86c0-e00fd01eb870"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{propietario_nombre}+" "+$F{propietario_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="117" width="179" height="20" uuid="ef040970-2287-43b5-8fdf-894a50995f79"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{propietario_tipoPropietario}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="195" y="132" width="70" height="18" uuid="928148b6-dd94-4eed-baf6-2ab09c290684"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Std2of5" drawText="true" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{propietario_cedula}.toString()]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<staticText>
+				<reportElement mode="Opaque" x="8" y="137" width="179" height="13" backcolor="#FFFFCC" uuid="3833afb9-2760-457a-a444-e9695d707501"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Educación de Calidad para la Equidad Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="98" width="50" height="10" uuid="c60a36c9-a2d8-404d-a76c-9b10c56eb307"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="65" y="98" width="122" height="10" uuid="4297151b-aac2-47de-8343-bc843864c3f0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{propietario_telFijo}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="195" y="51" width="70" height="70" uuid="d8afde60-9699-42b9-93d5-de6cb66ce928"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+				<imageExpression><![CDATA[$F{propietario_Foto}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

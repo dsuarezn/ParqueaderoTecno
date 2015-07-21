@@ -2,17 +2,26 @@ package co.edu.udistrital.web.controladores;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.PersistenceException;
+import javax.sql.DataSource;
 
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,13 +30,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 import co.edu.udistrital.entidades.Propietario;
 import co.edu.udistrital.web.dto.PropietarioDTO;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
+
 
 @Controller
 @RequestMapping(value="/propietarios")
 public class PropietariosController extends CommonController {
 
 	private static final Logger logger = LoggerFactory.getLogger(PropietariosController.class);
-	
+		
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		logger.info("Devolviendo la vista de listar propietarios");
@@ -138,11 +156,57 @@ public class PropietariosController extends CommonController {
 			logger.info("El fichero ha sido borrado satisfactoriamente");
 		else
 			logger.info("El fichero no puede ser borrado, ubicacion=" + archivo.getAbsolutePath());
-		
+	
 		model.addAttribute("exito","Se ha eliminado el propietario exitosamente");
 		return listar(model);
 	}
 	
+	private DataSource dataSource;
+	 
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+	
+	
+	@RequestMapping(value = "/carne/{cedula}", method = RequestMethod.GET)
+	public String generarCarne(@PathVariable long cedula, Model model) {
+		logger.info("Generando Reporte.");
+		Propietario propietario = propietarioServiceImpl.buscarPropietarioPorCedula(cedula);
+		try {String jrxmlFile = "C:/Users/Adriana/git/ParqueaderoTecno/ParqueaderoTecno/src/main/webapp/resources/jasper/reportCarne.jrxml";
+	        JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlFile);
+	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, dataSource.getConnection());
+	        JasperViewer.viewReport(jasperPrint);
+	        model.addAttribute("exito","El carné del propietario ha sido generado exitosamente!");
+		} catch(Exception e){
+			logger.info("Error al generar Reporte.");
+		}         
+		return listar(model);
+	}
+//	public String generarCarne(@PathVariable long cedula, ModelMap modelMap, Model model) throws FileNotFoundException, JRException {
+//		logger.info("Generando Reporte.");
+//		Propietario propietario = propietarioServiceImpl.buscarPropietarioPorCedula(cedula);
+//		try {
+//		Map<String, Object> parameters = new HashMap<String, Object>();
+//        parameters.put("ReportTitle", "PDF JasperReport");
+//        parameters.put("propietario_cedula", propietario.getCedula());
+//        parameters.put("propietario_nombre", propietario.getNombre());
+//        parameters.put("propietario_apellido", propietario.getApellido());
+//        parameters.put("propietario_telFijo", propietario.getTelFijo());
+//        parameters.put("propietario_tipoPropietario", propietario.getTipoPropietario());
+//        parameters.put("propietario_Foto", propietario.getFoto());
+//		
+//        String jrxmlFile = "C:/Users/Adriana/git/ParqueaderoTecno/ParqueaderoTecno/src/main/webapp/resources/jasper/reportCarne.jrxml";
+//        InputStream input = new FileInputStream(new File(jrxmlFile));
+//        JasperReport jasperReport = JasperCompileManager.compileReport(input);
+//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters);
+//        String destFileName = "C:/Users/Adriana/git/ParqueaderoTecno/ParqueaderoTecno/src/main/webapp/resources/jasper/carne.pdf";
+//        JasperExportManager.exportReportToPdfFile(jasperPrint, destFileName);
+//		} catch(Exception e){
+//			logger.info("Error al generar Reporte.");
+//		}         
+//		return listar(model);
+//	}
+		
 	private Propietario crearPropietario(PropietarioDTO propietario){
 		return propietarioServiceImpl.crearPropietario(new Propietario(Long.valueOf(propietario.getCedula()),propietario.getApellido(),propietario.getEstado(),propietario.getFoto(),propietario.getNombre(),propietario.getTelFijo(),propietario.getTelMovil(),propietario.getTipoPropietario()));
 	}
