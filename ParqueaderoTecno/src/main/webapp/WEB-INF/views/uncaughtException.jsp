@@ -6,17 +6,16 @@
 <title><spring:message code="uncaughtException.view.tittle"/></title>
 </head>
 <body>
+		<p><br /></p>
 		<div class="container">
 		    <div class="row">
 		        <div class="col-md-12">
 		            <div class="error-template">
 		                <h1><spring:message code="uncaughtException.labels.oopsmsg"/></h1>
-		                <h2><spring:message code="uncaughtException.labels.mensaje"/></h2>
-		                <div class="error-details">
-		                    <spring:message code="uncaughtException.labels.error.detalle"/>
-		                </div>
-		                <div class="error-actions">
-		                    <a href="#" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span><spring:message code="uncaughtException.boton.acasa"/></a>		                    
+		                <center><img alt="stop" src="${pageContext.request.contextPath}/resources/images/Stop.png" /></center>
+		                <h2><spring:message code="uncaughtException.labels.mensaje"/></h2>		                
+		                <div class="error-actions notFound">
+		                    <a href="${pageContext.request.contextPath}/welcome" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-home"></span> <spring:message code="uncaughtException.boton.acasa"/></a>		                    
 		                </div>
 		            </div>
 		        </div>

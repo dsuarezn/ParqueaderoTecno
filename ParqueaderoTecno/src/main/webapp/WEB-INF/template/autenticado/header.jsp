@@ -8,7 +8,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-           <a class="navbar-brand" href="#"><spring:message code="global.app.name"/></a>
+           <a class="navbar-brand" href="<c:url value="/welcome" />"><spring:message code="global.app.name"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">         
         <ul class="nav navbar-nav navbar-right">
@@ -19,7 +19,10 @@
 		          </c:if>
           			<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#"> <spring:message code="header.labels.changePassword"/></a></li>
+		            <li><a href="<c:url value='/usuarios/editar/${pageContext.request.userPrincipal.name}' />"> <spring:message code="header.labels.changePassword"/></a></li>
+		            <li role="separator" class="divider"></li>
+		            <li><a href="#"> <spring:message code="header.labels.help"/></a></li>
+		            <li><a href="<c:url value="/about" />"> <spring:message code="header.labels.about"/></a></li>
 		            <li role="separator" class="divider"></li>
 		            <li><a href="javascript:formSubmit()"> <spring:message code="global.salir"/></a></li>
 		          </ul>

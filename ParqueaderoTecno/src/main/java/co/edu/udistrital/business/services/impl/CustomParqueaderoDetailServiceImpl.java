@@ -39,21 +39,17 @@ public class CustomParqueaderoDetailServiceImpl implements CustomParqueaderoDeta
 	}
 
 	@Override
-	public Parqueadero crearParqueadero(Parqueadero parqueadero)
-			throws PersistenceException {
-		
+	public Parqueadero crearParqueadero(Parqueadero parqueadero) throws PersistenceException {		
 		return daoFactory.getParqueaderoDAOImpl().create(parqueadero);
 	}
 
 	@Override
-	public Parqueadero actualizarParqueadero(Parqueadero parqueadero)
-			throws PersistenceException {
+	public Parqueadero actualizarParqueadero(Parqueadero parqueadero) throws PersistenceException {
 		return daoFactory.getParqueaderoDAOImpl().update(parqueadero);
 	}
 
 	@Override
-	public void borrarParqueadero(Parqueadero parqueadero)
-			throws PersistenceException {
+	public void borrarParqueadero(Parqueadero parqueadero) throws PersistenceException {
 		daoFactory.getParqueaderoDAOImpl().delete(parqueadero);		
 	}
 

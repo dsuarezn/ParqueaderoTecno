@@ -2,6 +2,7 @@ package co.edu.udistrital.dao;
 
 import java.io.Serializable;
 
+
 public interface GenericDAOInterface <T, PK extends Serializable>{
 	 /** persiste la nueva instancia del objeto en la base de datos */
     T create(T newInstance);
@@ -15,6 +16,5 @@ public interface GenericDAOInterface <T, PK extends Serializable>{
 
     /** elimina un objeto persistido */
     void delete(T persistentObject);
-		
-	
+
 }

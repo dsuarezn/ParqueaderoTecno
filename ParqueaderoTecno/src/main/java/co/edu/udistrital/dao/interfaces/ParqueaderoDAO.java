@@ -9,7 +9,7 @@ import co.edu.udistrital.entidades.Parqueadero;
 
 public interface ParqueaderoDAO extends GenericDAOInterface<Parqueadero, String> {
 
-	public List<Parqueadero> findAllParqueaderos() throws PersistenceException ;
-	public Parqueadero findParqueaderosByTipo(String tipoParqueadero) throws PersistenceException ;
+	public List<Parqueadero> findAllParqueaderos() throws PersistenceException;
+	public Parqueadero findParqueaderosByTipo(String tipoParqueadero) throws PersistenceException;
 
 }

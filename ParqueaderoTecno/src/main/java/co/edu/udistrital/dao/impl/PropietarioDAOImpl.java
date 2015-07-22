@@ -1,8 +1,8 @@
 package co.edu.udistrital.dao.impl;
 
+
 import java.util.List;
 
-import javax.persistence.Id;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 

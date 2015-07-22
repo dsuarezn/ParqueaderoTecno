@@ -1,6 +1,5 @@
 package co.edu.udistrital.web.dto;
 
-import java.util.Date;
 
 public class RegistroFormDTO {
 	

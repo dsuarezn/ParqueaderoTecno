@@ -18,7 +18,8 @@ import java.util.List;
 @Table(name="vehiculos")
 @NamedQueries({
 	@NamedQuery(name="Vehiculo.findAll", query="SELECT v FROM Vehiculo v"),
-	@NamedQuery(name="Vehiculo.findByCedula", query="SELECT v FROM Vehiculo v WHERE v.propietario.cedula = :cedula")
+	@NamedQuery(name="Vehiculo.findByCedula", query="SELECT v FROM Vehiculo v WHERE v.propietario.cedula = :cedula"),
+	@NamedQuery(name="Vehiculo.findByPlaca", query="SELECT v FROM Vehiculo v WHERE v.placa = :placa")
 })
 public class Vehiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -50,6 +51,15 @@ public class Vehiculo implements Serializable {
 	public Vehiculo() {
 	}
 
+	public Vehiculo(String placa, String marca, String linea,Propietario propietario,String tipoVehiculo) {
+		super();
+		this.placa = placa;
+		this.marca = marca;
+		this.linea = linea;
+		this.propietario = propietario;
+		this.tipovehiculo = tipoVehiculo;
+	}
+	
 	public String getPlaca() {
 		return this.placa;
 	}
@@ -103,6 +113,8 @@ public class Vehiculo implements Serializable {
 	public void setPropietario(Propietario propietario) {
 		this.propietario = propietario;
 	}
+
+
 
 	public String getTipovehiculo() {
 		return tipovehiculo;

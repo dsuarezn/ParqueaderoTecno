@@ -3,22 +3,18 @@ package co.edu.udistrital.web.controladores;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import co.edu.udistrital.business.services.CustomUserDetailsService;
-import co.edu.udistrital.business.services.RoleService;
 import co.edu.udistrital.entidades.Role;
 import co.edu.udistrital.entidades.User;
 import co.edu.udistrital.web.dto.UserWebDTO;
@@ -53,7 +49,7 @@ public class UsuariosController extends CommonController{
 	public String vistaCrear(Model model) {
 		logger.info("Devolviendo la vista de crear usuarios");
 		UserWebDTO userDTO=new UserWebDTO();
-		userDTO.setEsCrear(true);			
+		userDTO.setEsCrear(true);
 		List<Role> listaRoles = roleServiceImpl.buscarTodosRoles();
 		model.addAttribute("roleslist",listaRoles);
 		model.addAttribute("user",userDTO);		
@@ -62,14 +58,38 @@ public class UsuariosController extends CommonController{
 	
 	@RequestMapping(value = "/modificarAction", method = RequestMethod.POST)
 	public String modificar(UserWebDTO usuario, Model model) {
-		logger.info("Entrando a modificar usuario en modo "+(usuario.getEsCrear()?"Creaciï¿½n":"Modificaciï¿½n"));
-		if(usuario.getEsCrear()){
-			crearUser(usuario);
-			model.addAttribute("exito","Se ha creado el usuario exitosamente");
+		logger.info("Entrando a modificar usuario en modo "+(usuario.getEsCrear()?"Creación":"Modificación"));
+		User resultUser=null;
+		try {
+			resultUser = customUserDetailsServiceImpl.buscarUsuarioPorNombre(usuario.getUsername());
+		} catch (PersistenceException e) {
+			logger.info("Usuario existente");
 		}
-		else{
+		
+		if(usuario.getEsCrear()){
+			if (resultUser != null){
+				model.addAttribute("error","Actualmente ya existe una persona con ese nombre de usuario, por favor inténtelo de nuevo...");
+			} else{
+				crearUser(usuario);
+				model.addAttribute("exito","Se ha creado el usuario exitosamente");
+			}
+		} else{
+			while (usuario.getPassword().equalsIgnoreCase("")){
+				usuario.setPassword(resultUser.getPassword());
+				break;
+			}
+			
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        String name = auth.getName();
+	        
+	        while (name.equalsIgnoreCase(usuario.getUsername())){
+	        	usuario.setRolename(resultUser.getRole().getNombre());
+	        	usuario.setEnable(resultUser.getEnable());
+	        	break;
+	        }
+	        
 			modificarUser(usuario);
-			model.addAttribute("exito","Se ha editado el usuario exitosamente");
+			model.addAttribute("exito","Se ha editado el usuario exitosamente");			
 		}
 		return listar(model);
 	}

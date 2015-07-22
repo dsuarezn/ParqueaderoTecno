@@ -20,6 +20,8 @@
 		<mysqlconn.version>5.0.5</mysqlconn.version>
 		<jackson.version>2.5.0</jackson.version>
 		<codehaus.version>1.9.13</codehaus.version>
+		<commonsfile.version>1.3.1</commonsfile.version>
+		<commonsio.version>2.4</commonsio.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -35,6 +37,11 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -243,7 +250,43 @@
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
-		</dependency> 		     
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>5.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		
+	
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.itextpdf</groupId> -->
+<!-- 			<artifactId>itextpdf</artifactId> -->
+<!-- 			<version>5.0.6</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.5</version>
+		</dependency>
+
+
+
+				
+		
+				
+		
+
+		
+ 	
+		
+
 	</dependencies>
     <build>
         <plugins>

@@ -6,6 +6,7 @@ import java.lang.reflect.ParameterizedType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+
 public class GenericDAOJPAImpl<T, PK extends Serializable> 
 	implements GenericDAOInterface<T, PK> 
 	{
@@ -41,5 +42,4 @@ public class GenericDAOJPAImpl<T, PK extends Serializable>
 		persistentObject = this.em.merge(persistentObject);
 		this.em.remove(persistentObject);
 	}
-
 }

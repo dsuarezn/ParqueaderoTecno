@@ -17,6 +17,13 @@
 	<context:component-scan base-package="co.edu.udistrital.*" />	
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 	
+	<!-- Se crea el datasource simple a partir de dbcp2 -->
+<!-- 	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> -->
+<!-- 	    <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!-- 	    <property name="url" value="jdbc:mysql://localhost:3306/parqueadero" /> -->
+<!-- 	    <property name="username" value="admin" /> -->
+<!-- 	    <property name="password" value="1234" /> -->
+<!--   	</bean> -->
 
 	<!-- Se crea el datasource simple a partir de dbcp2 -->
 	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
